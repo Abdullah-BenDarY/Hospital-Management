@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    >
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1504788" />
+
+    <ImageView
+        android:id="@+id/uperBackGround"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0.20"
+        android:scaleType="fitXY"
+        app:layout_constraintHeight_percent="0.41"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.82"
+        app:srcCompat="@drawable/shape1"
+
+        />
+
+    <ImageView
+        android:id="@+id/bottomBackGround"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0.20"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.45"
+        app:layout_constraintWidth_percent="0.82"
+        app:srcCompat="@drawable/shape2" />
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline"
+        app:layout_constraintWidth_percent="0.37"
+       android:src="@drawable/ic_logo" />
+
+    <TextView
+        android:id="@+id/welcomeMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/welcome_back"
+        android:textColor="@color/mintGreen"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/icon" />
+
+    <TextView
+        android:id="@+id/login_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/to_continue_login_now"
+        android:layout_marginEnd="6dp"
+        android:textColor="@color/dark_gray"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@id/welcomeMessage"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeMessage" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/phoneBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="51sp"
+        android:gravity="center"
+        style="@style/inputLayoutStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_message"
+        app:startIconDrawable="@drawable/ic_mail_t">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="15dp"
+            android:hint="@string/email"
+            android:maxLines="1"
+            android:inputType="textEmailAddress"
+            android:paddingStart="64dp"
+            android:textSize="18sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/cursor"
+        android:layout_width="10dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="35dp"
+        android:src="@drawable/ic_cursor"
+        app:layout_constraintBottom_toBottomOf="@id/phoneBox"
+        app:layout_constraintStart_toStartOf="@id/phoneBox"
+        app:layout_constraintTop_toTopOf="@id/phoneBox"  />
+
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/password_box"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        app:passwordToggleEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phoneBox"
+        style="@style/inputLayoutStyle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="15dp"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:paddingStart="50dp"
+            android:textSize="18sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/passwod_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintBottom_toBottomOf="@id/password_box"
+        app:layout_constraintStart_toStartOf="@id/password_box"
+        app:layout_constraintTop_toTopOf="@id/password_box"
+        app:srcCompat="@drawable/ic_lock" />
+
+    <ImageView
+        android:id="@+id/cursor1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="6dp"
+        android:src="@drawable/ic_cursor"
+        app:layout_constraintBottom_toBottomOf="@id/password_box"
+        app:layout_constraintStart_toEndOf="@id/passwod_icon"
+        app:layout_constraintTop_toTopOf="@id/password_box" />
+
+
+    <TextView
+        android:id="@+id/forgetPasswordBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/forget_password"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="22dp"
+        android:textColor="@color/dark_gray"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password_box" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_login"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/login"
+        style="@style/btnMintGreen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/forgetPasswordBtn"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
