@@ -12,10 +12,9 @@ import javax.inject.Inject
 class NewsDataSourceImpl @Inject constructor
     (private val apiService: WebServices) : NewsDataSource {
 
-        override fun invokeLogin(email: String, password: String): Flow<ApiResult<ModelLogin>?> {
-
-            return executeApi {
-                apiService.login(email = email, password = password).toModelLogin()
-            }
+    override fun invokeLogin(email: String, password: String): Flow<ApiResult<ModelLogin>?> {
+        return executeApi {
+            apiService.login(email = email, password = password).toModelLogin()
         }
+    }
 }

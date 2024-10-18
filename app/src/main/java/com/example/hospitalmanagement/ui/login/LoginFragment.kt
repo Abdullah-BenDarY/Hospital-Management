@@ -31,6 +31,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginContract.ViewModel
         observeLogin()
     }
 
+
     override fun initClicks() {
         binding.btnLogin.setOnClickListener {
             doLogin()
@@ -39,7 +40,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginContract.ViewModel
 
     private fun observeLogin() {
         viewModel.events.observe(viewLifecycleOwner, ::handleEvents)
-
         lifecycleScope.launch {
             viewModel.states.collect{
                 handleStates(it)
@@ -47,19 +47,20 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginContract.ViewModel
         }
     }
 
-    private fun handleStates(state: LoginContract.State): LoginContract.State {
+    private fun handleStates(state: LoginContract.State) {
         when(state){
-            LoginContract.State.InitialState -> TODO()
-            is LoginContract.State.NavigateToForgetPassword -> TODO()
+            LoginContract.State.InitialState -> null
+            is LoginContract.State.NavigateToForgetPassword -> showToast("forget password")
             is LoginContract.State.NavigateToHome -> showToast(state.modelLogin.data?.type)
         }
-        return state
     }
 
     private fun handleEvents(event: LoginContract.Event?) {
         when (event) {
-            is LoginContract.Event.ShowMessage ->
+            is LoginContract.Event.ShowErrorMessage ->
                 showToast(event.uiMessage)
+            is LoginContract.Event.ShowThrowableMessage ->
+                showToast(event.throwable.message)
             null -> showToast(getString(R.string.something_went_wrong))
         }
     }
@@ -67,6 +68,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginContract.ViewModel
     private fun doLogin() {
         val email = binding.etEmail .text.toString()
         val password = binding.etPassword.text.toString()
+        val login = viewModel.doIntent(LoginContract.Intent.DoLogin(email, password))
 
         if (email.isBlank() ){
             binding.etEmail.error = getString(R.string.email_is_required)
@@ -79,7 +81,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginContract.ViewModel
         if (password.isBlank()){
             binding.etPassword.error = getString(R.string.password_is_required)
             return
-        }
-        else viewModel.doIntent(LoginContract.Intent.DoLogin(email, password))
+        } else login
+
     }
 }

@@ -18,7 +18,8 @@ class LoginContract{
     }
 
     sealed class Event(){
-        data class ShowMessage(val uiMessage: UIMessage):Event()
+        data class ShowErrorMessage(val uiMessage: String):Event()
+        data class ShowThrowableMessage(val throwable: Throwable):Event()
     }
 
     sealed class State(){

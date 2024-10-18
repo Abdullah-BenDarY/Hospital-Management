@@ -13,5 +13,4 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun inflateBinding(): ActivityMainBinding
             = ActivityMainBinding.inflate(layoutInflater)
-
 }

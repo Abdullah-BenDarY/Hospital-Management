@@ -15,7 +15,7 @@ open class BaseViewModel:ViewModel() {
         return UIMessage()
     }
 
-    fun handleError(throwable:Throwable) : UIMessage {
+    fun handleError(throwable : Throwable) : UIMessage {
         when(throwable){
             is ConnectionError -> UIMessage(throwable.message)
             is ServerError -> UIMessage(throwable.message)

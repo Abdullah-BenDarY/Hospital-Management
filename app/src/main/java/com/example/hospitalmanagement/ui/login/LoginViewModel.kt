@@ -1,7 +1,6 @@
 package com.example.hospitalmanagement.ui.login
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.domain.ApiResult
 import com.example.domain.useCases.LoginUseCase
@@ -37,25 +36,27 @@ class LoginViewModel @Inject constructor(
             loginUseCase.invoke(email, password)
                 .collect { result ->
                     when (result) {
-                        is ApiResult.Success -> _state.emit(
+                        is ApiResult.Success ->
+                            if (result.data.status == 1){
+                            _state.emit(
                             LoginContract.State.NavigateToHome(
                                 modelLogin = result.data
                             )
-                        )
+                        )} else _event.postValue(
+                                    LoginContract.Event.ShowErrorMessage(
+                                        result.data.message ?: "Unkonwn Error"
+                                    )
+                                    )
 
                         is ApiResult.Failure -> _event.postValue(
-                            LoginContract.Event.ShowMessage(
-                                handleError(result.throwable)
+                            LoginContract.Event.ShowThrowableMessage(
+                                result.throwable
                             )
-                        )
-
-                        is ApiResult.Error -> _event.postValue(
-                            LoginContract.Event.ShowMessage(
-                                handleError(result.message ?: "Unkonwn Error")
                             )
-                        )
 
-                        null -> handleError("Unresolved Error")
+                        null -> LoginContract.Event.ShowErrorMessage(
+                            "Unkonwn Error"
+                        )
                     }
 
                 }
