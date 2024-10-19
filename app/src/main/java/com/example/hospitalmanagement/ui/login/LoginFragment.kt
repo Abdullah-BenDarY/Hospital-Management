@@ -31,36 +31,40 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginContract.ViewModel
         observeLogin()
     }
 
-
     override fun initClicks() {
         binding.btnLogin.setOnClickListener {
             doLogin()
         }
+        binding.forgetPasswordBtn.setOnClickListener {
+            viewModel.doIntent(LoginContract.Intent.RePassword)
+        }
     }
 
     private fun observeLogin() {
-        viewModel.events.observe(viewLifecycleOwner, ::handleEvents)
+        viewModel.states.observe(viewLifecycleOwner, this::handleStates)
+
         lifecycleScope.launch {
-            viewModel.states.collect{
-                handleStates(it)
+            viewModel.events.collect {
+                handleEvents(it)
             }
         }
     }
 
-    private fun handleStates(state: LoginContract.State) {
-        when(state){
-            LoginContract.State.InitialState -> null
-            is LoginContract.State.NavigateToForgetPassword -> showToast("forget password")
-            is LoginContract.State.NavigateToHome -> showToast(state.modelLogin.data?.type)
+    private fun handleEvents(event: LoginContract.Event) {
+        when (event) {
+            LoginContract.Event.InitialEvent -> {}
+            is LoginContract.Event.NavigateToForgetPassword -> {}
+            is LoginContract.Event.NavigateToHome -> showToast(event.modelLogin.data?.type)
         }
     }
 
-    private fun handleEvents(event: LoginContract.Event?) {
-        when (event) {
-            is LoginContract.Event.ShowErrorMessage ->
-                showToast(event.uiMessage)
-            is LoginContract.Event.ShowThrowableMessage ->
-                showToast(event.throwable.message)
+    private fun handleStates(state: LoginContract.State?) {
+        when (state) {
+            is LoginContract.State.ShowErrorMessage ->
+                showToast(state.uiMessage)
+
+            is LoginContract.State.ShowThrowableMessage ->
+                showToast(state.throwable.message)
             null -> showToast(getString(R.string.something_went_wrong))
         }
     }
@@ -81,7 +85,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginContract.ViewModel
         if (password.isBlank()){
             binding.etPassword.error = getString(R.string.password_is_required)
             return
-        } else login
-
+        } else
+            return login
     }
 }

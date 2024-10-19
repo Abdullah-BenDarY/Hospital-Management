@@ -3,28 +3,30 @@ package com.example.hospitalmanagement.ui.login
 import androidx.lifecycle.LiveData
 import com.example.domain.models.ModelLogin
 import com.example.hospitalmanagement.base.BaseViewModel
-import com.example.hospitalmanagement.base.UIMessage
 import kotlinx.coroutines.flow.StateFlow
 
-class LoginContract{
+interface LoginContract{
     abstract class ViewModel : BaseViewModel(){
         abstract fun doIntent(intent: Intent)
-        abstract val events: LiveData<Event>
-       abstract val states: StateFlow<State>
-
+        abstract val states: LiveData<State>
+        abstract val events: StateFlow<Event>
     }
-    sealed class Intent(){
+    // view -> viewModel
+    sealed class Intent {
         data class DoLogin(val email:String, val password:String):Intent()
+        data object RePassword : Intent()
     }
 
-    sealed class Event(){
-        data class ShowErrorMessage(val uiMessage: String):Event()
-        data class ShowThrowableMessage(val throwable: Throwable):Event()
+    // viewModel -> view
+    sealed class State {
+        data class ShowErrorMessage(val uiMessage: String) : State()
+        data class ShowThrowableMessage(val throwable: Throwable) : State()
     }
 
-    sealed class State(){
-        data object InitialState : State()
-        class NavigateToHome( val modelLogin: ModelLogin): State()
-        class NavigateToForgetPassword( val modelLogin: ModelLogin): State()
+    // viewModel -> view
+    sealed class Event {
+        data object InitialEvent : Event()
+        class NavigateToHome(val modelLogin: ModelLogin) : Event()
+        class NavigateToForgetPassword(val modelLogin: ModelLogin) : Event()
     }
 }

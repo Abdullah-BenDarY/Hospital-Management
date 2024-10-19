@@ -17,16 +17,20 @@ class LoginViewModel @Inject constructor(
     private val loginUseCase: LoginUseCase
 ) : LoginContract.ViewModel() {
 
-    private val _event = SingleLiveData<LoginContract.Event>()
-    private val _state = MutableStateFlow<LoginContract.State>(LoginContract.State.InitialState)
+    private val _state = SingleLiveData<LoginContract.State>()
+    private val _event = MutableStateFlow<LoginContract.Event>(LoginContract.Event.InitialEvent)
 
-    override val events: LiveData<LoginContract.Event> get() = _event
-    override val states: StateFlow<LoginContract.State> get() = _state
+    override val states: LiveData<LoginContract.State> get() = _state
+    override val events: StateFlow<LoginContract.Event> get() = _event
 
     override fun doIntent(intent: LoginContract.Intent) {
         when (intent) {
             is LoginContract.Intent.DoLogin -> {
                 login(intent.email, intent.password)
+            }
+
+            LoginContract.Intent.RePassword -> {
+
             }
         }
     }
@@ -38,23 +42,24 @@ class LoginViewModel @Inject constructor(
                     when (result) {
                         is ApiResult.Success ->
                             if (result.data.status == 1){
-                            _state.emit(
-                            LoginContract.State.NavigateToHome(
+                                _event.emit(
+                                    LoginContract.Event.NavigateToHome(
                                 modelLogin = result.data
                             )
-                        )} else _event.postValue(
-                                    LoginContract.Event.ShowErrorMessage(
+                                )
+                            } else _state.postValue(
+                                LoginContract.State.ShowErrorMessage(
                                         result.data.message ?: "Unkonwn Error"
                                     )
                                     )
 
-                        is ApiResult.Failure -> _event.postValue(
-                            LoginContract.Event.ShowThrowableMessage(
+                        is ApiResult.Failure -> _state.postValue(
+                            LoginContract.State.ShowThrowableMessage(
                                 result.throwable
                             )
                             )
 
-                        null -> LoginContract.Event.ShowErrorMessage(
+                        null -> LoginContract.State.ShowErrorMessage(
                             "Unkonwn Error"
                         )
                     }
