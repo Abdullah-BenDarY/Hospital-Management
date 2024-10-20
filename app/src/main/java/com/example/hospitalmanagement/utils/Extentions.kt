@@ -7,19 +7,15 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 
 fun Fragment.showToast (massage : Any?) {
-    Toast.makeText(requireContext(), "$massage", Toast.LENGTH_LONG).show()
-}
+    Toast.makeText(requireContext(), "$massage", Toast.LENGTH_LONG).show() }
 
 fun shakeErrorView(view: View) {
     val shakeAnimation = ObjectAnimator.ofFloat(view, "translationX", 0f, -10f, 10f, -10f, 10f, 0f)
     shakeAnimation.duration = 800
-    shakeAnimation.start()
-}
-
+    shakeAnimation.start() }
 
 fun animateSplashImageView(view: View) {
     val animator = ObjectAnimator.ofFloat(view, "translationY", -100f, 0f)
-    animator.duration = 2500
+    animator.duration = 3000
     animator.interpolator = AccelerateDecelerateInterpolator()
-    animator.start()
-}
+    animator.start() }
