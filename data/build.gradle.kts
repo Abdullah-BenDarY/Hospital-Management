@@ -61,6 +61,9 @@ dependencies {
 
         // Kotlin Coroutines Android (for using Flow on Android with the main thread)
         implementation (libs.kotlinx.coroutines.android)
+
+        //DataStore
+        implementation(libs.androidx.datastore.preferences)
     }
 
 }

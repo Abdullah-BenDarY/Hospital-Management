@@ -1,6 +1,7 @@
 package com.example.data.data
 
 import android.util.Log
+import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -42,6 +43,12 @@ object ApiModule {
     @Singleton
     fun provideGsonConverterFactory():GsonConverterFactory{
         return GsonConverterFactory.create()
+    }
+
+    @Provides
+    @Singleton
+    fun provideGson():Gson{
+        return Gson()
     }
 
     @Provides

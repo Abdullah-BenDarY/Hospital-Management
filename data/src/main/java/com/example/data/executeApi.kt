@@ -8,7 +8,7 @@ import java.io.IOException
 import java.net.SocketTimeoutException
 import java.util.concurrent.TimeoutException
 
-fun <T> executeApi(api: suspend () -> T) = flow<ApiResult<T>> {
+fun <T> executeApi(api: suspend () -> T) = flow{
     try {
         emit(Success(api.invoke()))
 
