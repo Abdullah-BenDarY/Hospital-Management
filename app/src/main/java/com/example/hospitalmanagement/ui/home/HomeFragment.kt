@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.View.VISIBLE
 import android.view.ViewGroup
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
@@ -19,6 +18,7 @@ import com.example.hospitalmanagement.utils.DOCTOR
 import com.example.hospitalmanagement.utils.MANAGER
 import com.example.hospitalmanagement.utils.NURSE
 import com.example.hospitalmanagement.utils.RECEPTIONIST
+import com.example.hospitalmanagement.utils.showToast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -51,19 +51,20 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, BaseViewModel>() {
         }
 
         if (args.modelLogin.data?.type.equals(RECEPTIONIST)) {
-            receptionistUi()
+            setReceptionistUi()
         } else if (args.modelLogin.data?.type.equals(DOCTOR)) {
-            doctorUi()
+            setDoctorUi()
+            setDoctorClicks()
         } else if (args.modelLogin.data?.type.equals(NURSE)) {
-            nurseUi()
+            setNurseUi()
         } else if (args.modelLogin.data?.type.equals(MANAGER)) {
-            managerUi()
+            setManagerUi()
         } else if (args.modelLogin.data?.type.equals(ANALYSIS)) {
-            analysisUi()
+            setAnalysisUi()
         }
     }
 
-    private fun receptionistUi() {
+    private fun setReceptionistUi() {
         binding.apply {
             btnFirst.icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_add_user)
             btnFirst.backgroundTintList =
@@ -72,7 +73,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, BaseViewModel>() {
         }
     }
 
-    private fun analysisUi() {
+    private fun setReceptionistClicks() {
+        binding.apply {
+            btnFirst
+        }
+    }
+
+    private fun setAnalysisUi() {
         binding.apply {
             btnFirst.icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_sheild)
             btnFirst.backgroundTintList =
@@ -81,7 +88,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, BaseViewModel>() {
         }
     }
 
-    private fun doctorUi() {
+    private fun setAnalysisClicks() {
+        binding.apply {
+            btnFirst
+        }
+    }
+
+    private fun setDoctorUi() {
         binding.apply {
             btnFirst.icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_add_user)
             btnFirst.backgroundTintList =
@@ -94,7 +107,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, BaseViewModel>() {
         }
     }
 
-    private fun nurseUi() {
+    private fun setDoctorClicks() {
+        binding.apply {
+            btnFirst.setOnClickListener { showToast("btnFirst") }
+            btnLast.setOnClickListener { showToast("btnLast") }
+        }
+    }
+
+    private fun setNurseUi() {
         binding.apply {
             btnFirst.icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_add_user)
             btnFirst.backgroundTintList =
@@ -107,7 +127,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, BaseViewModel>() {
         }
     }
 
-    private fun managerUi() {
+    private fun setNurseClicks() {
+        binding.apply {
+            btnFirst.setOnClickListener { showToast("btnFirst") }
+            btnLast.setOnClickListener { showToast("btnLast") }
+        }
+    }
+
+    private fun setManagerUi() {
         binding.apply {
             btnFirst.icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_sheild)
             btnFirst.backgroundTintList =
@@ -118,9 +145,37 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, BaseViewModel>() {
         }
     }
 
+    private fun setManagerClicks() {
+        binding.apply {
+            btnFirst.setOnClickListener { showToast("btnFirst") }
+            btnLast.setOnClickListener { showToast("btnLast") }
+        }
+    }
+
+    private fun setHrClicks() {
+        binding.apply {
+            btnFirst
+        }
+    }
 
     private fun initClicks() {
 
+        binding.apply {
+            btnTasks.setOnClickListener {
+                showToast("btnTasks")
+            }
+            btnReports.setOnClickListener {
+                showToast("btnReports")
+            }
+            btnFingerPrint.setOnClickListener {
+                showToast("btnFingerPrint")
+            }
+            imgUser.setOnClickListener {
+                var bundle = Bundle()
+                bundle.putParcelable("modelLogin", args.modelLogin)
+                navigateWithHostTo(R.id.profileFragment, bundle)
+            }
+        }
     }
 
 }

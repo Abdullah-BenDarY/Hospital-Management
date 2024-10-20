@@ -22,14 +22,14 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.17099863" />
+            app:layout_constraintGuide_percent="0.15099863" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/left_guideLine"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.02189781" />
+            app:layout_constraintGuide_percent="0.021077283" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/right_guideLine"
@@ -40,10 +40,12 @@
 
 
         <ImageView
-            android:id="@+id/img_user"
+            android:id="@+id/imgUser"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:src="@drawable/ic_logo"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             app:layout_constraintHeight_percent="0.1"
             app:layout_constraintStart_toStartOf="@id/left_guideLine"
             app:layout_constraintTop_toBottomOf="@+id/top_guideLine"
@@ -61,8 +63,8 @@
             android:textSize="16sp"
             app:layout_constraintEnd_toStartOf="@+id/imageView"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@id/img_user"
-            app:layout_constraintTop_toTopOf="@id/img_user" />
+            app:layout_constraintStart_toEndOf="@id/imgUser"
+            app:layout_constraintTop_toTopOf="@id/imgUser" />
 
         <TextView
             android:id="@+id/tvUserDetails"

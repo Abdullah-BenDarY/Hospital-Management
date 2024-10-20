@@ -21,14 +21,14 @@
         android:id="@+id/loginFragment"
         android:name="com.example.hospitalmanagement.ui.login.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/fragment_login">
 
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.hospitalmanagement.ui.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <argument
             android:name="modelLogin"
             app:argType="com.example.domain.models.ModelLogin" />
@@ -38,4 +38,9 @@
         android:name="com.example.hospitalmanagement.ui.splash.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.hospitalmanagement.ui.home.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>
