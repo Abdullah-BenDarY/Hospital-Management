@@ -24,7 +24,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginContract.ViewModel
         container: ViewGroup?
     ) = FragmentLoginBinding.inflate(inflater, container, false)
 
-    override fun initViewModel(): LoginContract.ViewModel   {
+    override fun initViewModel(): LoginContract.ViewModel {
         return loginViewModel
     }
 
@@ -71,26 +71,27 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginContract.ViewModel
 
             is LoginContract.State.ShowThrowableMessage ->
                 showToast(state.throwable.message)
+
             null -> showToast(getString(R.string.something_went_wrong))
         }
     }
 
     private fun doLogin() {
-        val email = binding.etEmail .text.toString()
+        val email = binding.etEmail.text.toString()
         val password = binding.etPassword.text.toString()
         val login = viewModel.doIntent(LoginContract.Intent.DoLogin(email, password))
 
-        if (email.isBlank() ){
+        if (email.isBlank()) {
             binding.etEmail.error = getString(R.string.email_is_required)
             shakeErrorView(binding.etEmail)
             return
         }
-        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             binding.etEmail.error = getString(R.string.enter_a_valid_email)
             shakeErrorView(binding.etEmail)
             return
         }
-        if (password.isBlank()){
+        if (password.isBlank()) {
             binding.etPassword.error = getString(R.string.password_is_required)
             shakeErrorView(binding.etPassword)
             return

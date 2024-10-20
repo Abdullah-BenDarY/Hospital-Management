@@ -1,119 +1,189 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginTop="20dp">
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/second_top_guideLine"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.19015048" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/top_guideLine"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.03" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/left_guideLine"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.02" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/second_top_guideLine"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.15099863" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/right_guideLine"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.98" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/left_guideLine"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.021077283" />
 
-
-    <ImageView
-        android:id="@+id/imgUser"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:padding="6dp"
-        android:src="@drawable/ic_logo"
-        app:layout_constraintHeight_percent="0.1"
-        app:layout_constraintStart_toStartOf="@id/left_guideLine"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.2" />
-
-    <TextView
-        android:id="@+id/textUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:text="@string/user_name"
-        android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@id/imgUser"
-        app:layout_constraintTop_toTopOf="@id/imgUser" />
-
-    <TextView
-        android:id="@+id/textUserdetails"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/user_details"
-        android:textColor="@color/mintGreen"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@id/textUsername"
-        app:layout_constraintTop_toBottomOf="@id/textUsername" />
-
-    <!--    <com.google.android.material.button.MaterialButton-->
-    <!--        android:id="@+id/btnCalls"-->
-    <!--        style="@style/btn_call_style"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="0dp"-->
-    <!--        android:text="@string/calls"-->
-    <!--        app:icon="@drawable/ic_calls"-->
-    <!--        app:layout_constraintEnd_toStartOf="@+id/btnTasks"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="@id/second_top_guideLine" />-->
-
-    <!--    <com.google.android.material.button.MaterialButton-->
-    <!--        android:id="@+id/btnTasks"-->
-    <!--        style="@style/btn_task_style"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="0dp"-->
-    <!--        android:text="@string/tasks"-->
-    <!--        app:icon="@drawable/check"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toEndOf="@+id/btnCalls"-->
-    <!--        app:layout_constraintTop_toTopOf="@id/second_top_guideLine" />-->
-
-    <!--    <com.google.android.material.button.MaterialButton-->
-    <!--        android:id="@+id/btnReports"-->
-    <!--        style="@style/btn_reports_style"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="0dp"-->
-    <!--        android:text="@string/reports"-->
-    <!--        app:icon="@drawable/files"-->
-    <!--        app:layout_constraintEnd_toStartOf="@+id/btnAttendance"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@id/btnCalls" />-->
-
-    <!--    <com.google.android.material.button.MaterialButton-->
-    <!--        android:id="@+id/btnAttendance"-->
-    <!--        style="@style/btn_attendance_style"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="0dp"-->
-    <!--        android:text="@string/attendance_leaving"-->
-    <!--        app:icon="@drawable/finger_print"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toEndOf="@+id/btnReports"-->
-    <!--        app:layout_constraintTop_toBottomOf="@id/btnTasks" />-->
-
-    <!--    <com.google.android.material.button.MaterialButton-->
-    <!--        android:id="@+id/btnCases"-->
-    <!--        style="@style/btn_cases_style"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="0dp"-->
-    <!--        android:text="@string/cases"-->
-    <!--        app:icon="@drawable/ic_cases"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@id/btnReports"-->
-    <!--        />-->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/right_guideLine"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.98" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/imgUser"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:src="@drawable/ic_logo"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintHeight_percent="0.1"
+            app:layout_constraintStart_toStartOf="@id/left_guideLine"
+            app:layout_constraintTop_toBottomOf="@+id/top_guideLine"
+            app:layout_constraintWidth_percent="0.2" />
+
+        <TextView
+            android:id="@+id/tvUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="8dp"
+            android:text="@string/user_name"
+            android:textAlignment="viewStart"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/imageView"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/imgUser"
+            app:layout_constraintTop_toTopOf="@id/imgUser" />
+
+        <TextView
+            android:id="@+id/tvUserDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:maxLines="1"
+            android:textAlignment="viewStart"
+            android:textColor="@color/font_color"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/tvUserName"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tvUserName"
+            app:layout_constraintTop_toBottomOf="@id/tvUserName"
+            tools:text="user details" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:src="@drawable/ic_notification"
+            app:layout_constraintBottom_toBottomOf="@id/tvUserName"
+            app:layout_constraintEnd_toStartOf="@id/right_guideLine"
+            app:layout_constraintTop_toTopOf="@id/tvUserName" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnFirst"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:backgroundTint="@color/orange"
+            android:drawableTint="@color/white"
+            android:text="@string/employee"
+            android:textSize="16sp"
+            app:cornerRadius="8dp"
+            app:icon="@drawable/ic_he_person"
+            app:iconGravity="textTop"
+            app:iconSize="60dp"
+            app:layout_constraintEnd_toStartOf="@+id/btnTasks"
+            app:layout_constraintHeight_percent="0.32"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/second_top_guideLine"
+            app:layout_constraintWidth_percent="0.45" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnTasks"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:backgroundTint="#5FDC89"
+            android:text="@string/tasks"
+            android:textSize="16sp"
+            app:cornerRadius="8sp"
+            app:icon="@drawable/ic_check"
+            app:iconGravity="textTop"
+            app:iconSize="60dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.28"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btnFirst"
+            app:layout_constraintTop_toTopOf="@id/second_top_guideLine"
+            app:layout_constraintWidth_percent="0.45" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnReports"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="#915FDC"
+            android:text="@string/reports"
+            android:textSize="16sp"
+            app:cornerRadius="8sp"
+            app:icon="@drawable/ic_file"
+            app:iconGravity="textTop"
+            app:iconSize="60dp"
+            app:layout_constraintEnd_toStartOf="@+id/btnFingerPrint"
+            app:layout_constraintHeight_percent="0.28"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnFirst"
+            app:layout_constraintWidth_percent="0.45" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnFingerPrint"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="#5FDCDC"
+            android:text="@string/attendance_leaving"
+            android:textSize="16sp"
+            app:cornerRadius="8sp"
+            app:icon="@drawable/ic_finger_print"
+            app:iconGravity="textTop"
+            app:iconSize="60dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.32"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btnReports"
+            app:layout_constraintTop_toBottomOf="@id/btnTasks"
+            app:layout_constraintWidth_percent="0.45" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLast"
+            android:layout_width="0dp"
+            android:layout_height="128dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="#DC915F"
+            android:drawableTint="@color/white"
+            android:text="@string/employee"
+            android:textSize="16sp"
+            android:visibility="invisible"
+            app:cornerRadius="8dp"
+            app:icon="@drawable/ic_he_person"
+            app:iconGravity="textTop"
+            app:iconSize="60dp"
+            app:layout_constraintEnd_toEndOf="@+id/btnFingerPrint"
+            app:layout_constraintStart_toStartOf="@+id/btnReports"
+            app:layout_constraintTop_toBottomOf="@+id/btnReports" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
