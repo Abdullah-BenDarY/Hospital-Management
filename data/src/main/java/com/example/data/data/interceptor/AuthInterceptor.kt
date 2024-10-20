@@ -1,7 +1,7 @@
 package com.example.data.data.interceptor
 
 
-import com.example.data.data.onlineDataSource.dataSourcesContract.AuthOfflineDataSource
+import com.example.data.data.DataSource.dataSourcesContract.AuthOfflineDataSource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first

@@ -1,14 +1,279 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.ProfileFragment">
+    android:background="@color/mintGreen"
+    >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+<!--    <androidx.cardview.widget.CardView-->
+<!--        android:id="@+id/card_view"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_margin="10dp"-->
+<!--        app:cardCornerRadius="15dp"-->
+<!--        app:cardElevation="0dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintWidth_percent="0.80"-->
+<!--        app:layout_constraintHeight_percent="0.70"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
 
-</FrameLayout>
+
+<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            >-->
+
+<!--            <androidx.constraintlayout.widget.Guideline-->
+<!--                android:id="@+id/g1"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="0dp"-->
+<!--                android:orientation="horizontal"-->
+<!--                app:layout_constraintGuide_percent="0.15" />-->
+
+<!--            <androidx.constraintlayout.widget.Guideline-->
+<!--                android:id="@+id/g2"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="0dp"-->
+<!--                android:orientation="horizontal"-->
+<!--                app:layout_constraintGuide_percent="0.90" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/userName"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/ebrahem_elzainy"-->
+<!--                android:textColor="@color/mintGreen"-->
+<!--                android:textSize="16sp"-->
+<!--                app:layout_constraintBottom_toTopOf="@+id/iconSpecialist"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/g1" />-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/iconSpecialist"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="10dp"-->
+<!--                android:src="@drawable/group_4504"-->
+<!--                app:layout_constraintBottom_toTopOf="@+id/icon_gender"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/userName" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tv_specialist_doctor"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="10dp"-->
+<!--                android:text="@string/specialist_doctor"-->
+<!--                android:textColorHint="@color/text_color2"-->
+<!--                android:textSize="14sp"-->
+<!--                app:layout_constraintBottom_toBottomOf="@id/iconSpecialist"-->
+<!--                app:layout_constraintStart_toEndOf="@id/iconSpecialist"-->
+<!--                app:layout_constraintTop_toTopOf="@id/iconSpecialist" />-->
+
+
+<!--            <ImageView-->
+<!--                android:id="@+id/icon_gender"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="10dp"-->
+<!--                android:src="@drawable/gander_icon"-->
+<!--                app:layout_constraintBottom_toTopOf="@+id/iconDate"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/iconSpecialist" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/text_Male"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="10dp"-->
+<!--                android:text="@string/male"-->
+<!--                android:textColorHint="@color/text_color2"-->
+<!--                android:textSize="14sp"-->
+<!--                app:layout_constraintBottom_toBottomOf="@id/icon_gender"-->
+<!--                app:layout_constraintStart_toEndOf="@id/icon_gender"-->
+<!--                app:layout_constraintTop_toTopOf="@id/icon_gender" />-->
+
+
+<!--            <ImageView-->
+<!--                android:id="@+id/iconDate"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="10dp"-->
+<!--                android:src="@drawable/date_icon"-->
+<!--                app:layout_constraintBottom_toTopOf="@+id/icon_location"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/icon_gender" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/text_Date"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="20dp"-->
+<!--                android:text="@string/birth_date"-->
+<!--                android:textColorHint="@color/text_color2"-->
+<!--                android:textSize="14sp"-->
+<!--                app:layout_constraintBottom_toBottomOf="@id/iconDate"-->
+<!--                app:layout_constraintStart_toEndOf="@id/iconDate"-->
+<!--                app:layout_constraintTop_toTopOf="@id/iconDate" />-->
+
+
+<!--            <ImageView-->
+<!--                android:id="@+id/icon_location"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="10dp"-->
+<!--                android:src="@drawable/location_2"-->
+<!--                app:layout_constraintBottom_toTopOf="@+id/iconSingle"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/iconDate" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/text_location"-->
+<!--                android:layout_width="230dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="20dp"-->
+<!--                android:text="@string/adress2"-->
+<!--                android:textColorHint="@color/text_color2"-->
+<!--                android:textSize="14sp"-->
+<!--                app:layout_constraintBottom_toBottomOf="@id/icon_location"-->
+<!--                app:layout_constraintStart_toEndOf="@id/icon_location"-->
+<!--                app:layout_constraintTop_toTopOf="@id/icon_location" />-->
+
+
+<!--            <ImageView-->
+<!--                android:id="@+id/iconSingle"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="10dp"-->
+<!--                android:src="@drawable/status"-->
+<!--                app:layout_constraintBottom_toTopOf="@+id/iconEmail"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/icon_location" />-->
+
+
+<!--            <TextView-->
+<!--                android:id="@+id/text_Single"-->
+<!--                android:layout_width="@dimen/_230sdp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="@dimen/_20sdp"-->
+<!--                android:text="@string/singel"-->
+<!--                android:textColorHint="@color/text_color2"-->
+<!--                android:textSize="@dimen/_14sdp"-->
+
+<!--                app:layout_constraintBottom_toBottomOf="@id/iconSingle"-->
+<!--                app:layout_constraintStart_toEndOf="@id/iconSingle"-->
+<!--                app:layout_constraintTop_toTopOf="@id/iconSingle" />-->
+
+
+<!--            <ImageView-->
+<!--                android:id="@+id/iconEmail"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="@dimen/_10sdp"-->
+<!--                android:src="@drawable/mail"-->
+<!--                app:layout_constraintBottom_toTopOf="@+id/icon_phone"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/iconSingle" />-->
+
+
+<!--            <TextView-->
+<!--                android:id="@+id/text_Email"-->
+<!--                android:layout_width="@dimen/_230sdp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="@dimen/_20sdp"-->
+<!--                android:text="@string/mail"-->
+<!--                android:textColorHint="@color/text_color2"-->
+<!--                android:textSize="@dimen/_14sdp"-->
+<!--                app:layout_constraintStart_toEndOf="@id/iconEmail"-->
+<!--                app:layout_constraintTop_toTopOf="@id/iconEmail" />-->
+
+
+<!--            <ImageView-->
+<!--                android:id="@+id/icon_phone"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="@dimen/_10sdp"-->
+<!--                android:src="@drawable/phone"-->
+<!--                app:layout_constraintBottom_toBottomOf="@id/g2"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/iconEmail"-->
+<!--                />-->
+
+
+<!--            <TextView-->
+<!--                android:id="@+id/text_phone"-->
+<!--                android:layout_width="@dimen/_230sdp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="@dimen/_20sdp"-->
+<!--                android:text="096521145523"-->
+<!--                android:textColorHint="@color/text_color2"-->
+<!--                android:textSize="@dimen/_14sdp"-->
+<!--                app:layout_constraintBottom_toBottomOf="@id/icon_phone"-->
+<!--                app:layout_constraintStart_toEndOf="@id/icon_phone"-->
+<!--                app:layout_constraintTop_toTopOf="@id/icon_phone" />-->
+<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+<!--    </androidx.cardview.widget.CardView>-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/shapeCircle"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:src="@drawable/ellipse_2"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/imageUser"-->
+<!--        app:layout_constraintBottom_toTopOf="@id/card_view"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/card_view"-->
+<!--        app:layout_constraintStart_toStartOf="@id/card_view"-->
+<!--        app:layout_constraintTop_toTopOf="@id/card_view"-->
+<!--        />-->
+
+<!--    <de.hdodenhof.circleimageview.CircleImageView-->
+<!--        android:id="@+id/imageUser"-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:layout_marginBottom="@dimen/_5sdp"-->
+<!--        app:layout_constraintTop_toTopOf="@id/shapeCircle"-->
+<!--        app:layout_constraintStart_toStartOf="@id/shapeCircle"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/shapeCircle"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/shapeCircle"-->
+<!--        android:src="@drawable/mask" />-->
+
+
+<!--    <com.google.android.material.button.MaterialButton-->
+<!--        android:id="@+id/btn_back"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:backgroundTint="@color/transparent"-->
+<!--        app:icon="@drawable/btn_back"-->
+<!--        app:iconSize="@dimen/_25sdp"-->
+<!--        app:iconTint="@color/white"-->
+<!--        tools:ignore="MissingConstraints" />-->
+
+
+<!--    <ImageView-->
+<!--        android:id="@+id/iv_circle_edit"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:src="@drawable/ellipse_607"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/card_view"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/card_view"-->
+<!--        app:layout_constraintStart_toStartOf="@id/card_view"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/card_view" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/btnEdit"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:src="@drawable/fi_rr_pencil"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/iv_circle_edit"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/iv_circle_edit"-->
+<!--        app:layout_constraintStart_toStartOf="@id/iv_circle_edit"-->
+<!--        app:layout_constraintTop_toTopOf="@id/iv_circle_edit"-->
+
+<!--        />-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

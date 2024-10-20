@@ -10,12 +10,19 @@
         app:enterAnim="@anim/enter_home"
         app:exitAnim="@anim/exit_login"
         app:popUpTo="@id/nav" />
+
     <action
         android:id="@+id/global_action_to_loginFragment"
         app:destination="@id/loginFragment"
         app:enterAnim="@anim/enter_home"
         app:exitAnim="@anim/exit_login"
         app:popUpTo="@id/nav" />
+
+    <action
+        android:id="@+id/global_action_to_profileFragment"
+        app:destination="@id/profileFragment"
+        app:enterAnim="@anim/enter_home"
+        app:exitAnim="@anim/exit_login" />
 
     <fragment
         android:id="@+id/loginFragment"
@@ -40,7 +47,11 @@
         tools:layout="@layout/fragment_splash" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.hospitalmanagement.ui.home.ProfileFragment"
+        android:name="com.example.hospitalmanagement.ui.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
 </navigation>
