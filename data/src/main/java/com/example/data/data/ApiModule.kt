@@ -25,6 +25,7 @@ object ApiModule {
             Log.e("api->", it)
         }
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.HEADERS)
         return loggingInterceptor
     }
 

@@ -1,12 +1,12 @@
-package com.example.data.data.DataSource
+package com.example.data.data.dataSource
 
 
-import com.example.data.data.DataSource.dataSourcesContract.AuthOfflineDataSource
-import com.example.data.data.DataSource.dataSourcesContract.AuthOnlineDataSource
-import com.example.data.data.DataSource.dataSourcesContract.ProfileDataSource
-import com.example.data.data.DataSource.dataSourcesImpl.AuthOfflineDataSourceImpl
-import com.example.data.data.DataSource.dataSourcesImpl.AuthOnlineDataSourceImpl
-import com.example.data.data.DataSource.dataSourcesImpl.ProfileDataSourceImpl
+import com.example.data.data.dataSource.dataSourcesContract.AuthOfflineDataSource
+import com.example.data.data.dataSource.dataSourcesContract.AuthOnlineDataSource
+import com.example.data.data.dataSource.dataSourcesContract.ProfileDataSource
+import com.example.data.data.dataSource.dataSourcesImpl.AuthOfflineDataSourceImpl
+import com.example.data.data.dataSource.dataSourcesImpl.AuthOnlineDataSourceImpl
+import com.example.data.data.dataSource.dataSourcesImpl.ProfileDataSourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

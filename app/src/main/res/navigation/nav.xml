@@ -51,7 +51,7 @@
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <argument
-            android:name="id"
+            android:name="userId"
             app:argType="integer" />
     </fragment>
 </navigation>

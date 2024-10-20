@@ -8,6 +8,7 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.hospitalmanagement.R
 import com.example.hospitalmanagement.base.BaseFragment
@@ -171,9 +172,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, BaseViewModel>() {
                 showToast("btnFingerPrint")
             }
             imgUser.setOnClickListener {
-                var bundle = Bundle()
-                bundle.putParcelable("modelLogin", args.modelLogin)
-                navigateWithHostTo(R.id.profileFragment, bundle)
+                findNavController().navigate(
+                    HomeFragmentDirections
+                        .globalActionToProfileFragment(args.modelLogin.data?.id!!))
             }
         }
     }

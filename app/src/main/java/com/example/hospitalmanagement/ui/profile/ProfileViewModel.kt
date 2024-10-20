@@ -39,8 +39,8 @@ class ProfileViewModel @Inject constructor(
                     when (result) {
                         is ApiResult.Success ->
                             if (result.data.status == 1) {
-                                _state.postValue(
-                                    ProfileContract.State.ShowData(
+                                _event.emit(
+                                    ProfileContract.Event.ShowData(
                                         result.data
                                     )
                                 )

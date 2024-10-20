@@ -1,10 +1,10 @@
-package com.example.data.data.DataSource.dataSourcesImpl
+package com.example.data.data.dataSource.dataSourcesImpl
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
-import com.example.data.data.DataSource.dataSourcesContract.AuthOfflineDataSource
+import com.example.data.data.dataSource.dataSourcesContract.AuthOfflineDataSource
 import com.example.domain.models.ModelLogin
 import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow
@@ -24,13 +24,13 @@ class AuthOfflineDataSourceImpl @Inject constructor(
                 val json = preferences[response]
                 json?.let {
                     provideGson.fromJson(it, ModelLogin::class.java)
-                } ?: ModelLogin() // Return a default value or handle null case appropriately
+                } ?: ModelLogin()
             }
     }
 
     override suspend fun saveUser(user: ModelLogin) {
         userDataStore.edit { settings ->
-            settings[response] = provideGson.toJson(user) // Serialize the user object
+            settings[response] = provideGson.toJson(user)
         }
     }
 }

@@ -33,7 +33,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileContract.Vie
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        profileViewModel.doIntent(ProfileContract.Intent.GetProfile(args.id))
+        profileViewModel.doIntent(ProfileContract.Intent.GetProfile(args.userId))
         observeProfile()
         initClicks()
     }
@@ -44,6 +44,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileContract.Vie
 
     private fun setProfileUi(modelLogin: ModelLogin) {
         val data = modelLogin.data
+        showToast(data?.id)
         binding.apply {
 
         }
@@ -62,6 +63,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileContract.Vie
     private fun handleEvents(event: ProfileContract.Event) {
         when (event) {
             ProfileContract.Event.InitialEvent -> {}
+            is ProfileContract.Event.ShowData -> setProfileUi(event.modelLogin)
             is ProfileContract.Event.NavigateToEdit -> {
                 findNavController().navigate(
                     LoginFragmentDirections.globalActionToHomeFragment(
@@ -74,7 +76,6 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileContract.Vie
 
     private fun handleStates(state: ProfileContract.State?) {
         when (state) {
-            is ProfileContract.State.ShowData -> setProfileUi(state.modelLogin)
             is ProfileContract.State.ShowErrorMessage -> showToast(state.uiMessage)
             is ProfileContract.State.ShowThrowableMessage -> showToast(state.throwable.message)
             null -> showToast(getString(R.string.something_went_wrong))

@@ -22,7 +22,7 @@ data class ModelLoginDTO(
             data = data?.toData(),
             message = message,
             status = status
-        )?: ModelLogin()
+        )
     }
 }
 
