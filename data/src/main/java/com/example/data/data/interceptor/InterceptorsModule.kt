@@ -1,6 +1,6 @@
 package com.example.data.data.interceptor
 
-import com.example.data.utils.SharedPrefs
+import com.example.data.data.onlineDataSource.dataSourcesContract.AuthOfflineDataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,8 +16,8 @@ object InterceptorsModule {
     @Provides
     @Singleton
     @OkHttpAuthInterceptor
-    fun provideAuthInterceptor(sharedPrefs: SharedPrefs): Interceptor {
-        return AuthInterceptor(sharedPrefs)
+    fun provideAuthInterceptor(authOfflineDataSource: AuthOfflineDataSource): Interceptor {
+        return AuthInterceptor(authOfflineDataSource)
     }
 
 

@@ -1,5 +1,9 @@
 package com.example.domain.models
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class ModelLogin(
 
     val data: Data? = null,
@@ -7,9 +11,9 @@ data class ModelLogin(
     val message: String? = null,
 
     val status: Int? = null
-)
+): Parcelable
 
-
+@Parcelize
 data class Data(
 
     val birthday: String? = null,
@@ -41,4 +45,4 @@ data class Data(
     val email: String? = null,
 
     val status: String? = null
-)
+): Parcelable

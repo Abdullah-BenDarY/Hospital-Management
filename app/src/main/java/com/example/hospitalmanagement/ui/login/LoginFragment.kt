@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.hospitalmanagement.R
 import com.example.hospitalmanagement.base.BaseFragment
 import com.example.hospitalmanagement.databinding.FragmentLoginBinding
+import com.example.hospitalmanagement.utils.shakeErrorView
 import com.example.hospitalmanagement.utils.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -29,9 +31,11 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginContract.ViewModel
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeLogin()
+        initClicks()
     }
 
-    override fun initClicks() {
+
+     private fun initClicks() {
         binding.btnLogin.setOnClickListener {
             doLogin()
         }
@@ -54,7 +58,9 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginContract.ViewModel
         when (event) {
             LoginContract.Event.InitialEvent -> {}
             is LoginContract.Event.NavigateToForgetPassword -> {}
-            is LoginContract.Event.NavigateToHome -> showToast(event.modelLogin.data?.type)
+            is LoginContract.Event.NavigateToHome -> {
+                findNavController().navigate(LoginFragmentDirections.globalActionToHomeFragment(event.modelLogin))
+            }
         }
     }
 
@@ -76,16 +82,21 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginContract.ViewModel
 
         if (email.isBlank() ){
             binding.etEmail.error = getString(R.string.email_is_required)
+            shakeErrorView(binding.etEmail)
             return
         }
         if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             binding.etEmail.error = getString(R.string.enter_a_valid_email)
+            shakeErrorView(binding.etEmail)
             return
         }
         if (password.isBlank()){
             binding.etPassword.error = getString(R.string.password_is_required)
+            shakeErrorView(binding.etPassword)
             return
         } else
             return login
     }
+
+
 }
