@@ -41,23 +41,23 @@ class LoginViewModel @Inject constructor(
                 .collect { result ->
                     when (result) {
                         is ApiResult.Success ->
-                            if (result.data.status == 1){
+                            if (result.data.status == 1) {
                                 _event.emit(
                                     LoginContract.Event.NavigateToHome(
-                                modelLogin = result.data
-                            )
+                                        modelLogin = result.data
+                                    )
                                 )
                             } else _state.postValue(
                                 LoginContract.State.ShowErrorMessage(
-                                        result.data.message ?: "Unkonwn Error"
-                                    )
-                                    )
+                                    result.data.message ?: "Unkonwn Error"
+                                )
+                            )
 
                         is ApiResult.Failure -> _state.postValue(
                             LoginContract.State.ShowThrowableMessage(
                                 result.throwable
                             )
-                            )
+                        )
 
                         null -> LoginContract.State.ShowErrorMessage(
                             "Unkonwn Error"
