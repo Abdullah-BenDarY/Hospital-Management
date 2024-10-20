@@ -19,7 +19,6 @@ interface ProfileContract{
 
     // viewModel -> view
     sealed class State {
-        data class ShowData(val modelLogin: ModelLogin) : State()
         data class ShowErrorMessage(val uiMessage: String) : State()
         data class ShowThrowableMessage(val throwable: Throwable) : State()
     }
@@ -28,6 +27,7 @@ interface ProfileContract{
     sealed class Event {
         data object InitialEvent : Event()
         class NavigateToEdit(val modelLogin: ModelLogin) : Event()
+        data class ShowData(val modelLogin: ModelLogin) : Event()
 
     }
 }
