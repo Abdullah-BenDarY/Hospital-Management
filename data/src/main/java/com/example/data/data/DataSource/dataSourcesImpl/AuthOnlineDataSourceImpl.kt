@@ -1,7 +1,7 @@
-package com.example.data.data.onlineDataSource.dataSourcesImpl
+package com.example.data.data.DataSource.dataSourcesImpl
 
 import com.example.data.data.WebServices
-import com.example.data.data.onlineDataSource.dataSourcesContract.AuthOnlineDataSource
+import com.example.data.data.DataSource.dataSourcesContract.AuthOnlineDataSource
 import com.example.domain.ApiResult
 import com.example.domain.models.ModelLogin
 import executeApi

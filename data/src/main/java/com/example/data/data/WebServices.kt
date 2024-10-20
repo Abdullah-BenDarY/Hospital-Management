@@ -14,4 +14,10 @@ interface WebServices {
         @Field("email") email: String,
         @Field("password") password: String,
     ): ModelLoginDTO
+
+    @FormUrlEncoded
+    @POST("show-profile")
+    suspend fun showProfile(
+        @Field("user_id") userId: Int
+    ): ModelLoginDTO
 }

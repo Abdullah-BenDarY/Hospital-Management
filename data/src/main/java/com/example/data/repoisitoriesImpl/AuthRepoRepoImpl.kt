@@ -1,7 +1,7 @@
 package com.example.data.repoisitoriesImpl
 
-import com.example.data.data.onlineDataSource.dataSourcesContract.AuthOfflineDataSource
-import com.example.data.data.onlineDataSource.dataSourcesContract.AuthOnlineDataSource
+import com.example.data.data.DataSource.dataSourcesContract.AuthOfflineDataSource
+import com.example.data.data.DataSource.dataSourcesContract.AuthOnlineDataSource
 import com.example.domain.ApiResult
 import com.example.domain.models.ModelLogin
 import com.example.domain.repoisitories.AuthRepo

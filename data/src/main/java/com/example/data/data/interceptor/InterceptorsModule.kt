@@ -1,6 +1,6 @@
 package com.example.data.data.interceptor
 
-import com.example.data.data.onlineDataSource.dataSourcesContract.AuthOfflineDataSource
+import com.example.data.data.DataSource.dataSourcesContract.AuthOfflineDataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

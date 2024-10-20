@@ -1,4 +1,4 @@
-package com.example.data.data.onlineDataSource.dataSourcesContract
+package com.example.data.data.DataSource.dataSourcesContract
 
 import com.example.domain.models.ModelLogin
 import kotlinx.coroutines.flow.Flow
