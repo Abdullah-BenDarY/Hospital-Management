@@ -64,13 +64,6 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileContract.Vie
         when (event) {
             ProfileContract.Event.InitialEvent -> {}
             is ProfileContract.Event.ShowData -> setProfileUi(event.modelLogin)
-            is ProfileContract.Event.NavigateToEdit -> {
-                findNavController().navigate(
-                    LoginFragmentDirections.globalActionToHomeFragment(
-                        event.modelLogin
-                    )
-                )
-        }
         }
     }
 

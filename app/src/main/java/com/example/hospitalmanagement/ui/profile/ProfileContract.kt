@@ -26,7 +26,6 @@ interface ProfileContract{
     // viewModel -> view
     sealed class Event {
         data object InitialEvent : Event()
-        class NavigateToEdit(val modelLogin: ModelLogin) : Event()
         data class ShowData(val modelLogin: ModelLogin) : Event()
 
     }
