@@ -1,4 +1,4 @@
-package com.example.data.data
+package com.example.data.data.diModules
 
 import android.content.Context
 import androidx.datastore.core.DataStore
@@ -22,5 +22,4 @@ object DataSourceModule{
     fun provideDataStore(@ApplicationContext context: Context): DataStore<Preferences> {
         return context.userPreferences
     }
-
 }
