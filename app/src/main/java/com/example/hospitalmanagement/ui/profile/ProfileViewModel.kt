@@ -46,7 +46,7 @@ class ProfileViewModel @Inject constructor(
                                 )
                                 _event.emit(
                                     ProfileContract.Event.NavigateToEdit(
-                                        modelLogin = result.data
+                                        result.data
                                     )
                                 )
                             } else _state.postValue(

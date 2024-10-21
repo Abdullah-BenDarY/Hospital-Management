@@ -8,7 +8,6 @@ import executeApi
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-// contract implementation for news data source
 class ProfileDataSourceImpl @Inject constructor
     (private val apiService: WebServices) : ProfileDataSource {
 
