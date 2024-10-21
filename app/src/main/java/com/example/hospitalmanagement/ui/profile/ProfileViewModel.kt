@@ -44,11 +44,6 @@ class ProfileViewModel @Inject constructor(
                                         result.data
                                     )
                                 )
-                                _event.emit(
-                                    ProfileContract.Event.NavigateToEdit(
-                                        result.data
-                                    )
-                                )
                             } else _state.postValue(
                                 ProfileContract.State.ShowErrorMessage(
                                     result.data.message ?: "Unkonwn Error"
