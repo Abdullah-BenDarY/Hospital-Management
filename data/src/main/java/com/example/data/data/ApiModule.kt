@@ -55,14 +55,12 @@ object ApiModule {
     @Provides
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient,
-                        gsonConverterFactory: GsonConverterFactory):Retrofit {
+                        gsonConverterFactory: GsonConverterFactory, ):Retrofit {
         return Retrofit.Builder()
                 .client(okHttpClient)
                 .baseUrl("https://hospital.elhossiny.net/api/v1/")
                 .addConverterFactory(gsonConverterFactory)
                 .build()
-
-
     }
 
     @Provides

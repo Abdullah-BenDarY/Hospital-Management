@@ -17,7 +17,7 @@ object InterceptorsModule {
     @Singleton
     @OkHttpAuthInterceptor
     fun provideAuthInterceptor(authOfflineDataSource: AuthOfflineDataSource): Interceptor {
-        return AuthInterceptor(authOfflineDataSource)
+        return AuthInterceptor(authOfflineDataSource )
     }
 
 

@@ -11,8 +11,6 @@ class ProfileRepoImpl @Inject constructor(
     private val profileOfflineDataSource: ProfileDataSource
 ) : ProfileRepo {
 
-    override fun getProfile(id: Int): Flow<ApiResult<ModelLogin>?> {
-        return profileOfflineDataSource.getProfile(id)
-
-        }
+    override fun getProfile(id: Int): Flow<ApiResult<ModelLogin>?> =
+        profileOfflineDataSource.getProfile(id)
     }
