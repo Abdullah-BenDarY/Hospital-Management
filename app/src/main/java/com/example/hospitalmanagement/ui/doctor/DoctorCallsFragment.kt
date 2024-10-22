@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.data.data.model.ModelDoctorCallsDTO
 import com.example.domain.models.DoctorCallsData
@@ -39,6 +40,15 @@ class DoctorCallsFragment : BaseFragment<FragmentDoctorCallsBinding , DoctorCont
         super.onViewCreated(view, savedInstanceState)
         doctorViewModel.doIntent(DoctorContract.Intent.GetAllCalls)
         observeDoctorCalls()
+        initClicks()
+    }
+
+    private fun initClicks() {
+        binding.apply {
+            btnBack.setOnClickListener{
+                findNavController().navigateUp()
+            }
+        }
     }
 
     private fun observeDoctorCalls() {
@@ -70,6 +80,5 @@ class DoctorCallsFragment : BaseFragment<FragmentDoctorCallsBinding , DoctorCont
     private fun setProfileUi(doctorCallsData: List<DoctorCallsData?>?) {
         binding.rvCalls.adapter = adapterDoctorCalls
         adapterDoctorCalls.submitList(doctorCallsData?.toMutableList())
-
     }
 }
