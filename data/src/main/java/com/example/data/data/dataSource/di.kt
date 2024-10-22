@@ -3,16 +3,17 @@ package com.example.data.data.dataSource
 
 import com.example.data.data.dataSource.dataSourcesContract.AuthOfflineDataSource
 import com.example.data.data.dataSource.dataSourcesContract.AuthOnlineDataSource
+import com.example.data.data.dataSource.dataSourcesContract.DoctorDataSource
 import com.example.data.data.dataSource.dataSourcesContract.HrDataSource
 import com.example.data.data.dataSource.dataSourcesContract.ProfileDataSource
 import com.example.data.data.dataSource.dataSourcesImpl.AuthOfflineDataSourceImpl
 import com.example.data.data.dataSource.dataSourcesImpl.AuthOnlineDataSourceImpl
+import com.example.data.data.dataSource.dataSourcesImpl.DoctorDataSourceImpl
 import com.example.data.data.dataSource.dataSourcesImpl.HrDataSourceImpl
 import com.example.data.data.dataSource.dataSourcesImpl.ProfileDataSourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.components.SingletonComponent
 
 @Module
@@ -39,4 +40,9 @@ abstract class DataSourceBind() {
     abstract fun bindHrDataSource(
         hrDataSourceImpl: HrDataSourceImpl
     ): HrDataSource
+
+    @Binds
+    abstract fun bindDoctorDataSource(
+        doctorDataSourceImpl: DoctorDataSourceImpl
+    ): DoctorDataSource
 }

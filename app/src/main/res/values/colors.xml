@@ -19,7 +19,8 @@
     <color name="hint_color">#E1E1E1</color>
     <color name="color_hint">#707070</color>
     <color name="mainly_green">#5FDCDC</color>
+    <color name="orange">#EC9511</color>
     <color name="mtrl_textinput_default_box_stroke_color">#E1E1E1</color>
-    <color name="orange">#DC915F</color>
+    <color name="hr_orange">#DC915F</color>
     <color name="blue">#5F9EDC</color>
 </resources>

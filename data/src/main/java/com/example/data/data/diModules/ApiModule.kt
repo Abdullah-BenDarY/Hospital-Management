@@ -1,7 +1,8 @@
 package com.example.data.data.diModules
 
 import android.util.Log
-import com.example.data.data.WebServices
+import com.example.data.data.apiCalls.DoctorCalls
+import com.example.data.data.apiCalls.WebServices
 import com.example.data.data.interceptor.InterceptorsModule
 import com.google.gson.Gson
 import dagger.Module
@@ -72,5 +73,11 @@ object ApiModule {
     @Singleton
     fun provideApiServices(retrofit: Retrofit): WebServices {
         return retrofit.create(WebServices::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideDoctorervices(retrofit: Retrofit): DoctorCalls {
+        return retrofit.create(DoctorCalls::class.java)
     }
 }

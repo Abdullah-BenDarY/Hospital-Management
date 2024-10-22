@@ -1,6 +1,7 @@
 package com.example.data.repoisitoriesImpl
 
 import com.example.domain.repoisitories.AuthRepo
+import com.example.domain.repoisitories.DoctorRepo
 import com.example.domain.repoisitories.HrRepo
 import com.example.domain.repoisitories.ProfileRepo
 import dagger.Binds
@@ -27,4 +28,9 @@ abstract class Repostories() {
     abstract fun provideHrRepo(
         hrRepoImpl: HrRepoImpl
     ): HrRepo
+
+    @Binds
+    abstract fun provideDoctorRepo(
+        doctorRepoImpl: DoctorRepoImpl
+    ): DoctorRepo
 }

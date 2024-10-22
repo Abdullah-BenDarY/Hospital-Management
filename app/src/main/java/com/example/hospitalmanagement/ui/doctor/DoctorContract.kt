@@ -1,6 +1,7 @@
 package com.example.hospitalmanagement.ui.doctor
 
 import androidx.lifecycle.LiveData
+import com.example.domain.models.ModelDoctorCalls
 import com.example.domain.models.ModelLogin
 import com.example.hospitalmanagement.base.BaseViewModel
 import kotlinx.coroutines.flow.StateFlow
@@ -13,7 +14,7 @@ interface DoctorContract{
     }
     // view -> viewModel
     sealed class Intent {
-        data class GetProfile(val id : Int):Intent()
+        data object GetAllCalls:Intent()
 
     }
 
@@ -26,7 +27,7 @@ interface DoctorContract{
     // viewModel -> view
     sealed class Event {
         data object InitialEvent : Event()
-        data class ShowData(val modelLogin: ModelLogin) : Event()
+        data class ShowData(val modelDoctorCalls: ModelDoctorCalls) : Event()
 
     }
 }
