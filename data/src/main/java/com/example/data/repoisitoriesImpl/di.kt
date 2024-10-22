@@ -1,6 +1,7 @@
 package com.example.data.repoisitoriesImpl
 
 import com.example.domain.repoisitories.AuthRepo
+import com.example.domain.repoisitories.HrRepo
 import com.example.domain.repoisitories.ProfileRepo
 import dagger.Binds
 import dagger.Module
@@ -21,4 +22,9 @@ abstract class Repostories() {
     abstract fun provideProfileRepo(
         profileRepoImpl: ProfileRepoImpl
     ): ProfileRepo
+
+    @Binds
+    abstract fun provideHrRepo(
+        hrRepoImpl: HrRepoImpl
+    ): HrRepo
 }

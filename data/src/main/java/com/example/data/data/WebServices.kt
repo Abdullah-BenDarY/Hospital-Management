@@ -1,6 +1,7 @@
 package com.example.data.data
 
 
+import com.example.data.data.model.ModelAllUsersDTO
 import com.example.data.data.model.ModelLoginDTO
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -27,4 +28,10 @@ interface WebServices {
     suspend fun showProfile(
         @Field("user_id") userId: Int
     ): ModelLoginDTO
+
+    @GET("doctors")
+    suspend fun getAllUsers(
+        @Query("type")
+        type: String
+    ): ModelAllUsersDTO
 }

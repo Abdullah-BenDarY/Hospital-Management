@@ -74,4 +74,7 @@ dependencies {
 
     //  Flow with main thread
     implementation (libs.kotlinx.coroutines.android)
+
+    // animation
+    implementation(libs.lottie)
 }
