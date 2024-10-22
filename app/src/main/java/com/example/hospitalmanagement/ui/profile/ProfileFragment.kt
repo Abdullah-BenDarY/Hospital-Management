@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.navigation.ui.navigateUp
 import com.example.domain.models.ModelLogin
 import com.example.hospitalmanagement.R
 import com.example.hospitalmanagement.base.BaseFragment
@@ -39,14 +40,24 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileContract.Vie
     }
 
     private fun initClicks() {
-
+        binding.apply {
+            btnBack.setOnClickListener {
+                findNavController().navigateUp()
+            }
+        }
     }
 
     private fun setProfileUi(modelLogin: ModelLogin) {
         val data = modelLogin.data
-        showToast(data?.id)
         binding.apply {
-
+            ("${data?.firstName} " + "${data?.lastName}").also {tvName.text = it }
+            tvSpecialist.text = data?.specialist
+            tvGender.text = data?.gender
+            tvDate.text = data?.birthday
+            tvLocation.text = data?.address
+            tvStatus.text = data?.status
+            tvEmail.text = data?.email
+            tvPhone.text = data?.mobile
         }
     }
 
