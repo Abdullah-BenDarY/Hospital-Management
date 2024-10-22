@@ -53,15 +53,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, BaseViewModel>() {
 
         if (args.modelLogin.data?.type.equals(RECEPTIONIST)) {
             setReceptionistUi()
+            setReceptionistClicks()
         } else if (args.modelLogin.data?.type.equals(DOCTOR)) {
             setDoctorUi()
             setDoctorClicks()
         } else if (args.modelLogin.data?.type.equals(NURSE)) {
             setNurseUi()
+            setNurseClicks()
         } else if (args.modelLogin.data?.type.equals(MANAGER)) {
             setManagerUi()
+            setManagerClicks()
         } else if (args.modelLogin.data?.type.equals(ANALYSIS)) {
             setAnalysisUi()
+            setAnalysisClicks()
         }
     }
 
@@ -110,8 +114,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, BaseViewModel>() {
 
     private fun setDoctorClicks() {
         binding.apply {
-            btnFirst.setOnClickListener { showToast("btnFirst") }
-            btnLast.setOnClickListener { showToast("btnLast") }
+            btnFirst.setOnClickListener {
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToCallsFragment())
+            }
+            btnLast.setOnClickListener {
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDoctorCasesFragment())
+            }
         }
     }
 
@@ -160,21 +168,31 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, BaseViewModel>() {
     }
 
     private fun initClicks() {
-
         binding.apply {
-            btnTasks.setOnClickListener {
-                showToast("btnTasks")
-            }
-            btnReports.setOnClickListener {
-                showToast("btnReports")
-            }
-            btnFingerPrint.setOnClickListener {
-                showToast("btnFingerPrint")
-            }
             imgUser.setOnClickListener {
                 findNavController().navigate(
                     HomeFragmentDirections
-                        .globalActionToProfileFragment(args.modelLogin.data?.id!!))
+                        .globalActionToProfileFragment(args.modelLogin.data?.id!!)
+                )
+            }
+            btnTasks.setOnClickListener {
+                findNavController().navigate(
+                    HomeFragmentDirections
+                        .actionHomeFragmentToTasksFragment()
+                )
+            }
+            btnReports.setOnClickListener {
+                findNavController().navigate(
+                    HomeFragmentDirections
+                        .actionHomeFragmentToReportsFragment()
+                )
+                btnFingerPrint.setOnClickListener {
+                    showToast("btnFingerPrint")
+//                    findNavController().navigate(
+//                        HomeFragmentDirections
+//                            .actionHomeFragmentToFingerPrintFragment())
+                }
+
             }
         }
     }
