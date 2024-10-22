@@ -4,7 +4,7 @@
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/mintGreen</item>
         <item name="colorPrimaryVariant">@color/mintGreen</item>
-<!--        <item name="colorOnPrimary">@color/mintGreen</item>-->
+        <!--        <item name="colorOnPrimary">@color/mintGreen</item>-->
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
@@ -13,4 +13,11 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <!--    round floating action button -->
+    <style name="CircularShapeOverlay">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
 </resources>

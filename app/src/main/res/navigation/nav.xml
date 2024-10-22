@@ -25,6 +25,13 @@
         app:exitAnim="@anim/slide_out_left"
         app:popEnterAnim="@anim/slide_in_left"
         app:popExitAnim="@anim/slide_out_right" />
+    <action
+        android:id="@+id/global_action_to_employeeListFragment"
+        app:destination="@id/employeeListFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
 
     <fragment
         android:id="@+id/loginFragment"
@@ -79,7 +86,7 @@
         android:id="@+id/profileFragment"
         android:name="com.example.hospitalmanagement.ui.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" >
+        tools:layout="@layout/fragment_profile">
         <argument
             android:name="userId"
             app:argType="integer" />
@@ -104,4 +111,9 @@
         android:name="com.example.hospitalmanagement.ui.common.ReportsFragment"
         android:label="fragment_reports"
         tools:layout="@layout/fragment_reports" />
+    <fragment
+        android:id="@+id/employeeListFragment"
+        android:name="com.example.hospitalmanagement.ui.hr.employeeList.EmployeeListFragment"
+        android:label="fragment_employee_list"
+        tools:layout="@layout/fragment_employee_list" />
 </navigation>

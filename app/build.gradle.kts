@@ -55,23 +55,30 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    // Hilt
+
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
+
     // Navigation
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
-    // Retrofit
+
     implementation(libs.retrofit)
     implementation (libs.converter.gson)
-    // Glide
+
+    //Glide
     implementation (libs.glide)
-    // Flow
+
+    //Flow
     implementation (libs.kotlinx.coroutines.core)
-    // Flow with main thread
+
+    //  Flow with main thread
     implementation (libs.kotlinx.coroutines.android)
     // Glide
     implementation (libs.glide)
     // circle image
     implementation(libs.circleimageview)
+
+    // animation
+    implementation(libs.lottie)
 }

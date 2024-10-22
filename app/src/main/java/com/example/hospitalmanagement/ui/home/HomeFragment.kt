@@ -16,6 +16,7 @@ import com.example.hospitalmanagement.base.BaseViewModel
 import com.example.hospitalmanagement.databinding.FragmentHomeBinding
 import com.example.hospitalmanagement.utils.ANALYSIS
 import com.example.hospitalmanagement.utils.DOCTOR
+import com.example.hospitalmanagement.utils.HR
 import com.example.hospitalmanagement.utils.MANAGER
 import com.example.hospitalmanagement.utils.NURSE
 import com.example.hospitalmanagement.utils.RECEPTIONIST
@@ -66,6 +67,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, BaseViewModel>() {
         } else if (args.modelLogin.data?.type.equals(ANALYSIS)) {
             setAnalysisUi()
             setAnalysisClicks()
+        } else if (args.modelLogin.data?.type.equals(HR)) {
+            setHrClicks()
         }
     }
 
@@ -163,7 +166,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, BaseViewModel>() {
 
     private fun setHrClicks() {
         binding.apply {
-            btnFirst
+            btnFirst.setOnClickListener {
+                findNavController().navigate(
+                    R.id.global_action_to_employeeListFragment
+                )
+            }
         }
     }
 
