@@ -48,6 +48,34 @@
         <argument
             android:name="modelLogin"
             app:argType="com.example.domain.models.ModelLogin" />
+        <action
+            android:id="@+id/action_homeFragment_to_callsFragment"
+            app:destination="@id/callsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_homeFragment_to_doctorCasesFragment"
+            app:destination="@id/doctorCasesFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_homeFragment_to_tasksFragment"
+            app:destination="@id/tasksFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_homeFragment_to_reportsFragment"
+            app:destination="@id/reportsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
@@ -63,6 +91,26 @@
             android:name="userId"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/callsFragment"
+        android:name="com.example.hospitalmanagement.ui.doctor.DoctorCallsFragment"
+        android:label="fragment_calls"
+        tools:layout="@layout/fragment_doctor_calls" />
+    <fragment
+        android:id="@+id/doctorCasesFragment"
+        android:name="com.example.hospitalmanagement.ui.doctor.DoctorCasesFragment"
+        android:label="fragment_doctor_cases"
+        tools:layout="@layout/fragment_doctor_cases" />
+    <fragment
+        android:id="@+id/tasksFragment"
+        android:name="com.example.hospitalmanagement.ui.common.TasksFragment"
+        android:label="fragment_tasks"
+        tools:layout="@layout/fragment_tasks" />
+    <fragment
+        android:id="@+id/reportsFragment"
+        android:name="com.example.hospitalmanagement.ui.common.ReportsFragment"
+        android:label="fragment_reports"
+        tools:layout="@layout/fragment_reports" />
     <fragment
         android:id="@+id/employeeListFragment"
         android:name="com.example.hospitalmanagement.ui.hr.employeeList.EmployeeListFragment"

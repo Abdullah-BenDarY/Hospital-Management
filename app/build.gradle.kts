@@ -74,6 +74,10 @@ dependencies {
 
     //  Flow with main thread
     implementation (libs.kotlinx.coroutines.android)
+    // Glide
+    implementation (libs.glide)
+    // circle image
+    implementation(libs.circleimageview)
 
     // animation
     implementation(libs.lottie)
