@@ -3,6 +3,7 @@ package com.example.hospitalmanagement.ui.doctor
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.domain.ApiResult
+import com.example.domain.useCases.DoctorUseCases
 import com.example.domain.useCases.ProfileUseCase
 import com.example.myapp.SingleLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,7 +15,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DoctorViewModel @Inject constructor(
-    private val profileUseCase: ProfileUseCase
+    private val doctorUseCases: DoctorUseCases
 ) : DoctorContract.ViewModel() {
 
     private val _state = SingleLiveData<DoctorContract.State>()
@@ -25,15 +26,15 @@ class DoctorViewModel @Inject constructor(
 
     override fun doIntent(intent: DoctorContract.Intent) {
         when (intent) {
-            is DoctorContract.Intent.GetProfile -> {
-                getProfileDetails(intent.id)
+            is DoctorContract.Intent.GetAllCalls -> {
+                getAllCalls()
             }
         }
     }
 
-    private fun getProfileDetails(id: Int) {
+    private fun getAllCalls() {
         viewModelScope.launch(Dispatchers.IO) {
-            profileUseCase.invoke(id)
+            doctorUseCases.invoke()
                 .collect { result ->
                     when (result) {
                         is ApiResult.Success ->

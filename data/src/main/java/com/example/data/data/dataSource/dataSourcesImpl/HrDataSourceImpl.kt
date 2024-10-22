@@ -1,6 +1,6 @@
 package com.example.data.data.dataSource.dataSourcesImpl
 
-import com.example.data.data.WebServices
+import com.example.data.data.apiCalls.WebServices
 import com.example.data.data.dataSource.dataSourcesContract.HrDataSource
 import com.example.domain.ApiResult
 import com.example.domain.models.ModelAllUsers
