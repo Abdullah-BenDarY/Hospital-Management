@@ -40,6 +40,7 @@ class DoctorCallsFragment : BaseFragment<FragmentDoctorCallsBinding , DoctorCont
         super.onViewCreated(view, savedInstanceState)
         doctorViewModel.doIntent(DoctorContract.Intent.GetAllCalls)
         observeDoctorCalls()
+        initClicks()
     }
 
     private fun initClicks() {
