@@ -67,12 +67,12 @@ class DoctorCallsFragment : BaseFragment<FragmentDoctorCallsBinding , DoctorCont
 
         lifecycleScope.launch {
             viewModel.events.collect {
-                handleEvents(it, id!!)
+                handleEvents(it, id)
             }
         }
     }
 
-    private fun handleEvents(event: DoctorContract.Event , id :Int) {
+    private fun handleEvents(event: DoctorContract.Event , id :Int? = null) {
         when (event) {
             DoctorContract.Event.InitialEvent -> {}
             is DoctorContract.Event.ShowCallsDataData ->
@@ -80,7 +80,8 @@ class DoctorCallsFragment : BaseFragment<FragmentDoctorCallsBinding , DoctorCont
 
             is DoctorContract.Event.ShowCallStatus ->
                 adapterDoctorCalls.checkStatusAndRemoveItem(
-                    status = event.modelCallsResponse.status , id=id)
+                    status = event.modelCallsResponse.status , id=id?:-1
+                )
         }
     }
 
