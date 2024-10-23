@@ -17,6 +17,7 @@ class AuthRepoRepoImpl @Inject constructor(
 
     override fun invokeLogin(email: String?, password: String?): Flow<ApiResult<ModelLogin>> =
         flow {
+
             if (email == null || password == null) {
                 val cashedUser = authOfflineDataSource.retrieveUser()?.first()
                 if (cashedUser != null) emit(ApiResult.Success(cashedUser))

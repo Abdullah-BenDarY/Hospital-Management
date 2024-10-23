@@ -1,6 +1,7 @@
 package com.example.hospitalmanagement.ui.doctor
 
 import androidx.lifecycle.LiveData
+import com.example.domain.models.ModelCallsResponse
 import com.example.domain.models.ModelDoctorCalls
 import com.example.domain.models.ModelLogin
 import com.example.hospitalmanagement.base.BaseViewModel
@@ -15,6 +16,7 @@ interface DoctorContract{
     // view -> viewModel
     sealed class Intent {
         data object GetAllCalls:Intent()
+        data class AcceptOrRejectCall(val id:Int, val status:String):Intent()
 
     }
 
@@ -27,7 +29,8 @@ interface DoctorContract{
     // viewModel -> view
     sealed class Event {
         data object InitialEvent : Event()
-        data class ShowData(val modelDoctorCalls: ModelDoctorCalls) : Event()
+        data class ShowCallsDataData(val modelDoctorCalls: ModelDoctorCalls) : Event()
+        data class ShowCallStatus(val modelCallsResponse: ModelCallsResponse) : Event()
 
     }
 }

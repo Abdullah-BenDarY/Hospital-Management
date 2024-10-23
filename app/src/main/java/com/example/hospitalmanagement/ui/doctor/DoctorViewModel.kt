@@ -26,9 +26,41 @@ class DoctorViewModel @Inject constructor(
 
     override fun doIntent(intent: DoctorContract.Intent) {
         when (intent) {
-            is DoctorContract.Intent.GetAllCalls -> {
-                getAllCalls()
-            }
+            is DoctorContract.Intent.GetAllCalls -> getAllCalls()
+            is DoctorContract.Intent.AcceptOrRejectCall -> acceptOrRejectCall(intent.id, intent.status)
+        }
+    }
+
+    private fun acceptOrRejectCall(id: Int , status: String) {
+        viewModelScope.launch(Dispatchers.IO){
+            doctorUseCases.acceptRejectCall(id, status)
+                .collect{result ->
+                    when(result){
+                        is ApiResult.Success ->
+                            if (result.data.status == 1) {
+                                _event.emit(
+                                    DoctorContract.Event.ShowCallStatus(
+                                        result.data
+                                    )
+                                )
+                            } else _state.postValue(
+                                DoctorContract.State.ShowErrorMessage(
+                                    result.data.message ?: "Unkonwn Error"
+                                )
+                            )
+
+                        is ApiResult.Failure -> _state.postValue(
+                            DoctorContract.State.ShowThrowableMessage(
+                                result.throwable
+                            )
+                        )
+
+                        null -> DoctorContract.State.ShowErrorMessage(
+                            "Unkonwn Error"
+                        )
+                    }
+
+                }
         }
     }
 
@@ -40,7 +72,7 @@ class DoctorViewModel @Inject constructor(
                         is ApiResult.Success ->
                             if (result.data.status == 1) {
                                 _event.emit(
-                                    DoctorContract.Event.ShowData(
+                                    DoctorContract.Event.ShowCallsDataData(
                                         result.data
                                     )
                                 )

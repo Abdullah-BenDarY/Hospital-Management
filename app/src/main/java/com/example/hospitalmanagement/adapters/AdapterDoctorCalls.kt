@@ -23,6 +23,7 @@ class AdapterDoctorCalls : RecyclerView.Adapter<AdapterDoctorCalls.CallsHolder>(
         if (calls != null) {
             holder.bind(calls)
         }
+//        deleteItem(position)
     }
 
     private var onAcceptClick: (Int) -> Unit = {}
@@ -35,26 +36,22 @@ class AdapterDoctorCalls : RecyclerView.Adapter<AdapterDoctorCalls.CallsHolder>(
         this.onBusyClick = onBusyClick
     }
 
-    private fun deleteItem(position: Int) {
-        if (position >= 0 && position < (callsData?.size ?: 0)) {
-            callsData?.removeAt(position)
-            notifyItemRemoved(position)
-        } else {
-            Log.e("AdapterCalls", "Invalid index $position, size: ${callsData?.size}")
-        }
-    }
-
     inner class CallsHolder(private val binding: ItemDoctorCallsBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         init {
+            // Accept button click
             binding.btnAccept.setOnClickListener {
-                onAcceptClick.invoke(callsData?.get(layoutPosition)!!.id!!)
-                deleteItem(layoutPosition)
+                callsData!![layoutPosition]?.id?.let { id ->
+                    onAcceptClick.invoke(id)
+                }
             }
+
+            // Busy button click
             binding.btnBusy.setOnClickListener {
-                onBusyClick.invoke(callsData?.get(layoutPosition)?.id!!)
-                deleteItem(layoutPosition)
+                callsData!![layoutPosition]?.id?.let { id ->
+                    onBusyClick.invoke(id)
+                }
             }
 
         }
@@ -71,4 +68,18 @@ class AdapterDoctorCalls : RecyclerView.Adapter<AdapterDoctorCalls.CallsHolder>(
         callsData = calls
         notifyDataSetChanged()
     }
+    private fun deleteItemById(id: Int) {
+        val position = callsData!!.indexOfFirst { it?.id == id }
+        if (position != -1 && position in callsData!!.indices) {
+            callsData?.removeAt(position)
+            notifyItemRemoved(position)
+        }
+    }
+
+    fun checkStatusAndRemoveItem(status: Int, id: Int) {
+        if (status == 1) {
+            deleteItemById(id)
+        }
+    }
+
 }
