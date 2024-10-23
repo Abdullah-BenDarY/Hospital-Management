@@ -30,7 +30,7 @@
         app:layout_constraintBottom_toBottomOf="@id/tvCases" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvCalls"
+        android:id="@+id/rvCases"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"

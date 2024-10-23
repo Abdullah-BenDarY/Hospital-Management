@@ -28,6 +28,40 @@ class DoctorViewModel @Inject constructor(
         when (intent) {
             is DoctorContract.Intent.GetAllCalls -> getAllCalls()
             is DoctorContract.Intent.AcceptOrRejectCall -> acceptOrRejectCall(intent.id, intent.status)
+            DoctorContract.Intent.GetDoctorCases -> getDoctorCases()
+        }
+    }
+
+    private fun getAllCalls() {
+        viewModelScope.launch(Dispatchers.IO) {
+            doctorUseCases.invoke()
+                .collect { result ->
+                    when (result) {
+                        is ApiResult.Success ->
+                            if (result.data.status == 1) {
+                                _event.emit(
+                                    DoctorContract.Event.ShowCallsDataData(
+                                        result.data
+                                    )
+                                )
+                            } else _state.postValue(
+                                DoctorContract.State.ShowErrorMessage(
+                                    result.data.message ?: "Unkonwn Error"
+                                )
+                            )
+
+                        is ApiResult.Failure -> _state.postValue(
+                            DoctorContract.State.ShowThrowableMessage(
+                                result.throwable
+                            )
+                        )
+
+                        null -> DoctorContract.State.ShowErrorMessage(
+                            "Unkonwn Error"
+                        )
+                    }
+
+                }
         }
     }
 
@@ -64,15 +98,15 @@ class DoctorViewModel @Inject constructor(
         }
     }
 
-    private fun getAllCalls() {
-        viewModelScope.launch(Dispatchers.IO) {
-            doctorUseCases.invoke()
-                .collect { result ->
-                    when (result) {
+    private fun getDoctorCases() {
+        viewModelScope.launch (Dispatchers.IO){
+            doctorUseCases.invokeDoctorCases()
+                .collect{ result ->
+                    when(result){
                         is ApiResult.Success ->
                             if (result.data.status == 1) {
                                 _event.emit(
-                                    DoctorContract.Event.ShowCallsDataData(
+                                    DoctorContract.Event.ShowDoctorCases(
                                         result.data
                                     )
                                 )
@@ -92,8 +126,8 @@ class DoctorViewModel @Inject constructor(
                             "Unkonwn Error"
                         )
                     }
-
                 }
+
         }
     }
 }
