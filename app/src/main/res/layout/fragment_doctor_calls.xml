@@ -7,7 +7,7 @@
     tools:context=".ui.doctor.DoctorCallsFragment">
 
     <TextView
-        android:id="@+id/tvProfile"
+        android:id="@+id/tvCases"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/calls"
@@ -27,8 +27,8 @@
         app:tint="@color/black"
         android:backgroundTint="@color/transparent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tvProfile"
-        app:layout_constraintBottom_toBottomOf="@id/tvProfile"
+        app:layout_constraintTop_toTopOf="@id/tvCases"
+        app:layout_constraintBottom_toBottomOf="@id/tvCases"
         />
 
 
@@ -41,7 +41,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvProfile"
+        app:layout_constraintTop_toBottomOf="@id/tvCases"
         tools:listitem="@layout/item_doctor_calls" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

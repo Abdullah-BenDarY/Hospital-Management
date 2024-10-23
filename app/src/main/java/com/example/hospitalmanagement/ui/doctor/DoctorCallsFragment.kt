@@ -7,23 +7,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
-import com.example.data.data.model.ModelDoctorCallsDTO
 import com.example.domain.models.DoctorCallsData
-import com.example.domain.models.ModelDoctorCalls
 import com.example.hospitalmanagement.R
 import com.example.hospitalmanagement.adapters.AdapterDoctorCalls
 import com.example.hospitalmanagement.base.BaseFragment
-import com.example.hospitalmanagement.base.BaseViewModel
 import com.example.hospitalmanagement.databinding.FragmentDoctorCallsBinding
-import com.example.hospitalmanagement.ui.home.HomeFragmentArgs
-import com.example.hospitalmanagement.ui.profile.ProfileContract
 import com.example.hospitalmanagement.utils.ACCEPTED
 import com.example.hospitalmanagement.utils.REJECTED
 import com.example.hospitalmanagement.utils.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import kotlin.properties.Delegates
 
 @AndroidEntryPoint
 class DoctorCallsFragment : BaseFragment<FragmentDoctorCallsBinding , DoctorContract.ViewModel>() {
@@ -53,11 +46,11 @@ class DoctorCallsFragment : BaseFragment<FragmentDoctorCallsBinding , DoctorCont
             }
         }
         adapterDoctorCalls.setOnAcceptClick {
-            viewModel.doIntent(DoctorContract.Intent.AcceptOrRejectCall(it , ACCEPTED))
+            viewModel.doIntent(DoctorContract.Intent.AcceptOrRejectCall(it, ACCEPTED))
             observeDoctorCalls(it)
         }
         adapterDoctorCalls.setOnBussyClick {
-            viewModel.doIntent(DoctorContract.Intent.AcceptOrRejectCall(it , REJECTED))
+            viewModel.doIntent(DoctorContract.Intent.AcceptOrRejectCall(it, REJECTED))
             observeDoctorCalls(it)
         }
     }
@@ -76,7 +69,7 @@ class DoctorCallsFragment : BaseFragment<FragmentDoctorCallsBinding , DoctorCont
         when (event) {
             DoctorContract.Event.InitialEvent -> {}
             is DoctorContract.Event.ShowCallsDataData ->
-                setProfileUi(event.modelDoctorCalls.data)
+                setCallsUi(event.modelDoctorCalls.data)
 
             is DoctorContract.Event.ShowCallStatus ->
                 adapterDoctorCalls.checkStatusAndRemoveItem(
@@ -93,7 +86,7 @@ class DoctorCallsFragment : BaseFragment<FragmentDoctorCallsBinding , DoctorCont
         }
     }
 
-    private fun setProfileUi(doctorCallsData: List<DoctorCallsData?>?) {
+    private fun setCallsUi(doctorCallsData: List<DoctorCallsData?>?) {
         binding.rvCalls.adapter = adapterDoctorCalls
         adapterDoctorCalls.submitList(doctorCallsData?.toMutableList())
     }
