@@ -18,6 +18,22 @@ interface WebServices {
         @Field("password") password: String,
     ): ModelLoginDTO
 
+    @FormUrlEncoded
+    @POST("register")
+    suspend fun registerUser(
+        @Field("email") email: String,
+        @Field("password") password: String,
+        @Field("first_name") fName: String,
+        @Field("last_name") lName: String,
+        @Field("gender") gender: String,
+        @Field("specialist") specialist: String,
+        @Field("birthday") birthday: String,
+        @Field("status") status: String,
+        @Field("address") address: String,
+        @Field("mobile") mobile: String,
+        @Field("type") type: String
+    ): ModelLoginDTO
+
 
     @FormUrlEncoded
     @POST("show-profile")
