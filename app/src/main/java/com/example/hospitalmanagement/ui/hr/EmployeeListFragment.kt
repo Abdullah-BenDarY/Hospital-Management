@@ -1,6 +1,8 @@
-package com.example.hospitalmanagement.ui.hr.employeeList
+package com.example.hospitalmanagement.ui.hr
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,25 +23,26 @@ import com.example.hospitalmanagement.utils.NURSE
 import com.example.hospitalmanagement.utils.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.util.Locale
 
 @AndroidEntryPoint
 class EmployeeListFragment :
-    BaseFragment<FragmentEmployeeListBinding, EmployeeListContract.ViewModel>() {
-    private val employeeListViewModel: EmployeeListContract.ViewModel by viewModels<EmployeeListViewModel>()
+    BaseFragment<FragmentEmployeeListBinding, HrContract.ViewModel>() {
+    private val hrViewModel: HrContract.ViewModel by viewModels<HrViewModel>()
 
     override fun inflateBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
     ) = FragmentEmployeeListBinding.inflate(inflater, container, false)
 
-    override fun initViewModel(): EmployeeListContract.ViewModel {
-        return employeeListViewModel
+    override fun initViewModel(): HrContract.ViewModel {
+        return hrViewModel
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        employeeListViewModel.doIntent(EmployeeListContract.Intent.getAllUsers("All"))
+        hrViewModel.doIntent(HrContract.Intent.getAllUsers("All"))
 
         observeUsers()
         initClicks()
@@ -47,8 +50,8 @@ class EmployeeListFragment :
 
     private fun initClicks() {
         binding.btnNewEmployee.setOnClickListener {
-//            findNavController()
-//                .navigate(R.id.action_employeeListFragment_to_newUserFragment)
+            findNavController()
+                .navigate(R.id.newUserFragment)
         }
         binding.btnBack.setOnClickListener {
             findNavController().navigateUp()
@@ -88,34 +91,58 @@ class EmployeeListFragment :
             else -> usersData
         }
         setupUsersAdapter(filteredList)
+        setupSearch(filteredList)
+
     }
 
     private fun setupUsersAdapter(usersData: List<UsersData>?) {
         val rv = binding.rvEmployee
         val employeeListAdapter = EmployeeListAdapter()
         employeeListAdapter.list = usersData
-        employeeListAdapter.setOnItemClickListener {
-            showToast("${it.id} + ${it.type}")
-            // findNavController().navigate(EmployeeListFragmentDirections.actionEmployeeListFragmentToProfileFragment(it.id))
+
+        employeeListAdapter.setOnItemClickListener { usersData ->
+            showToast("${usersData.id} + ${usersData.type}")
+            findNavController()
+                .navigate(EmployeeListFragmentDirections.globalActionToProfileFragment(usersData.id!!))
         }
         rv.adapter = employeeListAdapter
     }
 
-    private fun handleEvents(event: EmployeeListContract.Event) {
-        when (event) {
-            is EmployeeListContract.Event.InitialEvent -> {}
-            is EmployeeListContract.Event.ShowData -> {
-                binding.lottie.visibility = View.GONE
-                setupCategoryAdapter(event.modelAllUsers.data)
-                setupUsersAdapter(event.modelAllUsers.data)
+    private fun setupSearch(usersData: List<UsersData>?) {
+        binding.edtSearch.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                val query = s.toString().lowercase(Locale.getDefault())
+                val filteredList =
+                    usersData?.filter { it.first_name?.lowercase()?.contains(query) == true }
+                setupUsersAdapter(filteredList)
             }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
+    }
+
+    private fun handleEvents(event: HrContract.Event) {
+        when (event) {
+            is HrContract.Event.InitialEvent -> {}
+            is HrContract.Event.ShowData -> {
+                binding.lottie.visibility = View.GONE
+
+                event.modelAllUsers.data?.let {
+                    setupSearch(it)
+                    setupCategoryAdapter(it)
+                    setupUsersAdapter(it)
+                }
+            }
+
+            is HrContract.Event.ShowNewUserResponse -> {}
         }
     }
 
-    private fun handleStates(state: EmployeeListContract.State?) {
+    private fun handleStates(state: HrContract.State?) {
         when (state) {
-            is EmployeeListContract.State.ShowErrorMessage -> showToast(state.uiMessage)
-            is EmployeeListContract.State.ShowThrowableMessage -> showToast(state.throwable.message)
+            is HrContract.State.ShowErrorMessage -> showToast(state.uiMessage)
+            is HrContract.State.ShowThrowableMessage -> showToast(state.throwable.message)
             null -> showToast(getString(R.string.something_went_wrong))
         }
     }

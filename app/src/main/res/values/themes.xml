@@ -19,5 +19,16 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
     </style>
-
+    <style name="inputLayoutStyle">
+        <item name="boxCornerRadiusBottomEnd">8dp</item>
+        <item name="boxCornerRadiusBottomStart">8dp</item>
+        <item name="boxCornerRadiusTopEnd">8dp</item>
+        <item name="boxCornerRadiusTopStart">8dp</item>
+        <item name="boxStrokeColor">@color/font_color</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="android:textColorHint">@color/color_hint</item>
+        <item name="startIconTint">@color/font_color</item>
+        <item name="hintEnabled">false</item>
+        <item name="boxStrokeWidthFocused">1.5dp</item>
+    </style>
 </resources>
