@@ -113,7 +113,12 @@
         tools:layout="@layout/fragment_reports" />
     <fragment
         android:id="@+id/employeeListFragment"
-        android:name="com.example.hospitalmanagement.ui.hr.employeeList.EmployeeListFragment"
+        android:name="com.example.hospitalmanagement.ui.hr.EmployeeListFragment"
         android:label="fragment_employee_list"
         tools:layout="@layout/fragment_employee_list" />
+    <fragment
+        android:id="@+id/newUserFragment"
+        android:name="com.example.hospitalmanagement.ui.hr.NewUserFragment"
+        android:label="fragment_new_user"
+        tools:layout="@layout/fragment_new_user" />
 </navigation>

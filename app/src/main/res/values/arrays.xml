@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="spinner_specialist_items">
+        <item>Specialist</item>
+        <item>doctor</item>
+        <item>nurse</item>
+        <item>receptionist</item>
+        <item>manger</item>
+        <item>analysis</item>
+        <item>hr</item>
+        <!-- Add more items as needed -->
+    </array>
+    <array name="spinner_genders">
+        <item>Gender</item>
+        <item>male</item>
+        <item>female</item>
+        <!-- Add more items as needed -->
+    </array>
+    <array name="spinner_status">
+        <item>Status</item>
+        <item>Single</item>
+        <item>Married</item>
+        <!-- Add more items as needed -->
+    </array>
+</resources>
