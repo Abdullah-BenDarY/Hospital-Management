@@ -55,7 +55,7 @@
         <item name="android:paddingBottom">10dp</item>
     </style>
 
-    <style name="btn_accept_buse_style">
+    <style name="btn_accept_busy_style">
         <item name="layout_constraintWidth_percent">0.36</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">16sp</item>

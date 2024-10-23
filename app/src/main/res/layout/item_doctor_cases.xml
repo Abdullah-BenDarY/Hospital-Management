@@ -21,54 +21,38 @@
 
             <TextView
                 android:id="@+id/tvUsername"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
                 style="@style/tv_info_style"
-                android:layout_margin="20dp"
+                android:layout_margin="15dp"
                 android:drawableStart="@drawable/ic_spesialist_bg"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="Ebrahem Khaled"
-                tools:ignore="UseCompatTextViewDrawableXml" />
+                tools:text="Ebrahem Khaled" />
 
             <TextView
                 android:id="@+id/tvDate"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
                 style="@style/tv_info_style"
+                android:drawableStart="@drawable/ic_date_bg"
                 app:layout_constraintStart_toStartOf="@id/tvUsername"
                 app:layout_constraintTop_toBottomOf="@id/tvUsername"
-                android:drawableStart="@drawable/ic_date_bg"
-                tools:text="24 . 04 . 2021"
-                tools:ignore="UseCompatTextViewDrawableXml" />
-
-
+                tools:text="24 . 04 . 2021" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnAccept"
+                android:id="@+id/btnShowDetails"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                style="@style/btn_accept_busy_style"
-                android:text="@string/accept"
-                app:icon="@drawable/ic_accept"
+                android:layout_margin="15dp"
+                app:layout_constraintWidth_percent="0.6"
+                android:text="@string/show_details"
+                app:cornerRadius="10dp"
                 android:backgroundTint="@color/online_color"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/btnBusy"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvDate" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnBusy"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                style="@style/btn_accept_busy_style"
-                android:backgroundTint="@color/orange"
-                android:text="@string/busy"
-                app:icon="@drawable/ic_busy"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/btnAccept"
-                app:layout_constraintTop_toTopOf="@id/btnAccept"
-                app:layout_constraintBottom_toBottomOf="@id/btnAccept"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvDate"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
