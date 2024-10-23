@@ -18,9 +18,12 @@ import com.example.hospitalmanagement.base.BaseViewModel
 import com.example.hospitalmanagement.databinding.FragmentDoctorCallsBinding
 import com.example.hospitalmanagement.ui.home.HomeFragmentArgs
 import com.example.hospitalmanagement.ui.profile.ProfileContract
+import com.example.hospitalmanagement.utils.ACCEPTED
+import com.example.hospitalmanagement.utils.REJECTED
 import com.example.hospitalmanagement.utils.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import kotlin.properties.Delegates
 
 @AndroidEntryPoint
 class DoctorCallsFragment : BaseFragment<FragmentDoctorCallsBinding , DoctorContract.ViewModel>() {
@@ -49,22 +52,35 @@ class DoctorCallsFragment : BaseFragment<FragmentDoctorCallsBinding , DoctorCont
                 findNavController().navigateUp()
             }
         }
+        adapterDoctorCalls.setOnAcceptClick {
+            viewModel.doIntent(DoctorContract.Intent.AcceptOrRejectCall(it , ACCEPTED))
+            observeDoctorCalls(it)
+        }
+        adapterDoctorCalls.setOnBussyClick {
+            viewModel.doIntent(DoctorContract.Intent.AcceptOrRejectCall(it , REJECTED))
+            observeDoctorCalls(it)
+        }
     }
 
-    private fun observeDoctorCalls() {
+    private fun observeDoctorCalls(id :Int ?= null) {
         viewModel.states.observe(viewLifecycleOwner, this::handleStates)
 
         lifecycleScope.launch {
             viewModel.events.collect {
-                handleEvents(it)
+                handleEvents(it, id!!)
             }
         }
     }
 
-    private fun handleEvents(event: DoctorContract.Event) {
+    private fun handleEvents(event: DoctorContract.Event , id :Int) {
         when (event) {
             DoctorContract.Event.InitialEvent -> {}
-            is DoctorContract.Event.ShowData -> setProfileUi(event.modelDoctorCalls.data)
+            is DoctorContract.Event.ShowCallsDataData ->
+                setProfileUi(event.modelDoctorCalls.data)
+
+            is DoctorContract.Event.ShowCallStatus ->
+                adapterDoctorCalls.checkStatusAndRemoveItem(
+                    status = event.modelCallsResponse.status , id=id)
         }
     }
 
@@ -75,7 +91,6 @@ class DoctorCallsFragment : BaseFragment<FragmentDoctorCallsBinding , DoctorCont
             null -> showToast(getString(R.string.something_went_wrong))
         }
     }
-
 
     private fun setProfileUi(doctorCallsData: List<DoctorCallsData?>?) {
         binding.rvCalls.adapter = adapterDoctorCalls
