@@ -20,7 +20,7 @@ import com.example.hospitalmanagement.utils.ANALYSIS
 import com.example.hospitalmanagement.utils.DOCTOR
 import com.example.hospitalmanagement.utils.HR
 import com.example.hospitalmanagement.utils.NURSE
-import com.example.hospitalmanagement.utils.showToast
+import com.example.hospitalmanagement.utils.showMessage
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.util.Locale
@@ -101,7 +101,7 @@ class EmployeeListFragment :
         employeeListAdapter.list = usersData
 
         employeeListAdapter.setOnItemClickListener { usersData ->
-            showToast("${usersData.id} + ${usersData.type}")
+            showMessage("${usersData.id} + ${usersData.type}")
             findNavController()
                 .navigate(EmployeeListFragmentDirections.globalActionToProfileFragment(usersData.id!!))
         }
@@ -141,9 +141,9 @@ class EmployeeListFragment :
 
     private fun handleStates(state: HrContract.State?) {
         when (state) {
-            is HrContract.State.ShowErrorMessage -> showToast(state.uiMessage)
-            is HrContract.State.ShowThrowableMessage -> showToast(state.throwable.message)
-            null -> showToast(getString(R.string.something_went_wrong))
+            is HrContract.State.ShowErrorMessage -> showMessage(state.uiMessage)
+            is HrContract.State.ShowThrowableMessage -> showMessage(state.throwable.message)
+            null -> showMessage(getString(R.string.something_went_wrong))
         }
     }
 

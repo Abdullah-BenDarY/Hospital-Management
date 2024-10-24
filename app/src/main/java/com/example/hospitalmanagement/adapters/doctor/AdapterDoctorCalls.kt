@@ -1,6 +1,5 @@
-package com.example.hospitalmanagement.adapters
+package com.example.hospitalmanagement.adapters.doctor
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView

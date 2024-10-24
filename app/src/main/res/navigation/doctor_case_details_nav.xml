@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/details_nav"
+    app:startDestination="@id/doctorSubDetailsFragment">
+    <action
+        android:id="@+id/global_action_to_details"
+        app:destination="@id/doctorSubDetailsFragment"
+        app:popUpTo="@id/details_nav" />
+    <action
+        android:id="@+id/global_action_to_medical_record"
+        app:destination="@id/caseMedicalRecordFragment"
+        app:popUpTo="@id/doctorSubDetailsFragment" />
+    <action
+        android:id="@+id/global_action_to_medical_measurement"
+        app:destination="@id/caseMedicalMeasurementFragment"
+        app:popUpTo="@id/doctorSubDetailsFragment" />
+    <fragment
+        android:id="@+id/doctorSubDetailsFragment"
+        android:name="com.example.hospitalmanagement.ui.doctor.DoctorSubDetailsFragment"
+        android:label="DoctorSubDetailsFragment"
+        tools:layout="@layout/fragment_doctor_sub_details"/>
+    <fragment
+        android:id="@+id/caseMedicalRecordFragment"
+        android:name="com.example.hospitalmanagement.CaseMedicalRecordFragment"
+        android:label="fragment_case_medical_record"
+        tools:layout="@layout/fragment_case_medical_record" />
+    <fragment
+        android:id="@+id/caseMedicalMeasurementFragment"
+        android:name="com.example.hospitalmanagement.CaseMedicalMeasurementFragment"
+        android:label="fragment_case_medical_measurement"
+        tools:layout="@layout/fragment_case_medical_measurement" />
+</navigation>

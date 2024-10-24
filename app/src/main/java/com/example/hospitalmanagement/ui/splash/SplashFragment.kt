@@ -14,9 +14,8 @@ import com.example.hospitalmanagement.base.BaseFragment
 import com.example.hospitalmanagement.databinding.FragmentSplashBinding
 import com.example.hospitalmanagement.ui.login.LoginFragmentDirections
 import com.example.hospitalmanagement.utils.animateSplashImageView
-import com.example.hospitalmanagement.utils.showToast
+import com.example.hospitalmanagement.utils.showMessage
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -72,12 +71,12 @@ class SplashFragment : BaseFragment<FragmentSplashBinding, SplashContract.ViewMo
     private fun handleStates(state: SplashContract.State?) {
         when (state) {
             is SplashContract.State.ShowErrorMessage ->
-                showToast(state.uiMessage)
+                showMessage(state.uiMessage)
 
             is SplashContract.State.ShowThrowableMessage ->
-                showToast(state.throwable.message)
+                showMessage(state.throwable.message)
 
-            null -> showToast(getString(R.string.something_went_wrong))
+            null -> showMessage(getString(R.string.something_went_wrong))
         }
     }
 
