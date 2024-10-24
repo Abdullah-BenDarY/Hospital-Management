@@ -20,7 +20,7 @@ import com.example.hospitalmanagement.utils.HR
 import com.example.hospitalmanagement.utils.MANAGER
 import com.example.hospitalmanagement.utils.NURSE
 import com.example.hospitalmanagement.utils.RECEPTIONIST
-import com.example.hospitalmanagement.utils.showToast
+import com.example.hospitalmanagement.utils.showMessage
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -141,8 +141,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, BaseViewModel>() {
 
     private fun setNurseClicks() {
         binding.apply {
-            btnFirst.setOnClickListener { showToast("btnFirst") }
-            btnLast.setOnClickListener { showToast("btnLast") }
+            btnFirst.setOnClickListener { showMessage("btnFirst") }
+            btnLast.setOnClickListener { showMessage("btnLast") }
         }
     }
 
@@ -159,8 +159,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, BaseViewModel>() {
 
     private fun setManagerClicks() {
         binding.apply {
-            btnFirst.setOnClickListener { showToast("btnFirst") }
-            btnLast.setOnClickListener { showToast("btnLast") }
+            btnFirst.setOnClickListener { showMessage("btnFirst") }
+            btnLast.setOnClickListener { showMessage("btnLast") }
         }
     }
 
@@ -194,7 +194,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, BaseViewModel>() {
                         .actionHomeFragmentToReportsFragment()
                 )
                 btnFingerPrint.setOnClickListener {
-                    showToast("btnFingerPrint")
+                    showMessage("btnFingerPrint")
 //                    findNavController().navigate(
 //                        HomeFragmentDirections
 //                            .actionHomeFragmentToFingerPrintFragment())

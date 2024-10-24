@@ -13,7 +13,7 @@ import com.example.hospitalmanagement.R
 import com.example.hospitalmanagement.base.BaseFragment
 import com.example.hospitalmanagement.databinding.FragmentNewUserBinding
 import com.example.hospitalmanagement.utils.shakeErrorView
-import com.example.hospitalmanagement.utils.showToast
+import com.example.hospitalmanagement.utils.showMessage
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointBackward
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -62,16 +62,16 @@ class NewUserFragment :
             is HrContract.Event.ShowData -> {}
 
             is HrContract.Event.ShowNewUserResponse -> {
-                showToast(event.message)
+                showMessage(event.message)
             }
         }
     }
 
     private fun handleStates(state: HrContract.State?) {
         when (state) {
-            is HrContract.State.ShowErrorMessage -> showToast(state.uiMessage)
-            is HrContract.State.ShowThrowableMessage -> showToast(state.throwable.message)
-            null -> showToast(getString(R.string.something_went_wrong))
+            is HrContract.State.ShowErrorMessage -> showMessage(state.uiMessage)
+            is HrContract.State.ShowThrowableMessage -> showMessage(state.throwable.message)
+            null -> showMessage(getString(R.string.something_went_wrong))
         }
     }
 
@@ -130,10 +130,10 @@ class NewUserFragment :
             when {
                 fName.isEmpty() -> showFieldError(edtFName, R.string.required)
                 lName.isEmpty() -> showFieldError(edtLName, R.string.required)
-                gender == 0 -> showToast(requireContext().getString(R.string.please_select_gender))
-                type == 0 -> showToast(requireContext().getString(R.string.specialist_hint))
-                date == null -> showToast(requireContext().getString(R.string.birthday_hint))
-                status == 0 -> showToast(requireContext().getString(R.string.status_hint))
+                gender == 0 -> showMessage(requireContext().getString(R.string.please_select_gender))
+                type == 0 -> showMessage(requireContext().getString(R.string.specialist_hint))
+                date == null -> showMessage(requireContext().getString(R.string.birthday_hint))
+                status == 0 -> showMessage(requireContext().getString(R.string.status_hint))
                 phone.isEmpty() -> showFieldError(editPhone, R.string.required)
                 email.isEmpty() -> showFieldError(edtEmailAddress, R.string.required)
                 !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> showFieldError(

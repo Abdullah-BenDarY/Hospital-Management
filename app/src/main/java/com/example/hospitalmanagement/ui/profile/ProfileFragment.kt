@@ -8,13 +8,11 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.navigation.ui.navigateUp
 import com.example.domain.models.ModelLogin
 import com.example.hospitalmanagement.R
 import com.example.hospitalmanagement.base.BaseFragment
 import com.example.hospitalmanagement.databinding.FragmentProfileBinding
-import com.example.hospitalmanagement.ui.login.LoginFragmentDirections
-import com.example.hospitalmanagement.utils.showToast
+import com.example.hospitalmanagement.utils.showMessage
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -80,9 +78,9 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileContract.Vie
 
     private fun handleStates(state: ProfileContract.State?) {
         when (state) {
-            is ProfileContract.State.ShowErrorMessage -> showToast(state.uiMessage)
-            is ProfileContract.State.ShowThrowableMessage -> showToast(state.throwable.message)
-            null -> showToast(getString(R.string.something_went_wrong))
+            is ProfileContract.State.ShowErrorMessage -> showMessage(state.uiMessage)
+            is ProfileContract.State.ShowThrowableMessage -> showMessage(state.throwable.message)
+            null -> showMessage(getString(R.string.something_went_wrong))
         }
     }
 }

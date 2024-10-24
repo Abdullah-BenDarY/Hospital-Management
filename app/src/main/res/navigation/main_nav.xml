@@ -100,7 +100,15 @@
         android:id="@+id/doctorCasesFragment"
         android:name="com.example.hospitalmanagement.ui.doctor.DoctorCasesFragment"
         android:label="fragment_doctor_cases"
-        tools:layout="@layout/fragment_doctor_cases" />
+        tools:layout="@layout/fragment_doctor_cases" >
+        <action
+            android:id="@+id/action_doctorCasesFragment_to_caseDetailsFragment"
+            app:destination="@id/caseDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
     <fragment
         android:id="@+id/tasksFragment"
         android:name="com.example.hospitalmanagement.ui.common.TasksFragment"
@@ -121,4 +129,13 @@
         android:name="com.example.hospitalmanagement.ui.hr.NewUserFragment"
         android:label="fragment_new_user"
         tools:layout="@layout/fragment_new_user" />
+    <fragment
+        android:id="@+id/caseDetailsFragment"
+        android:name="com.example.hospitalmanagement.ui.doctor.CaseDetailsFragment"
+        android:label="fragment_case_details"
+        tools:layout="@layout/fragment_case_details" >
+        <argument
+            android:name="caseId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

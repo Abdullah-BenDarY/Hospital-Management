@@ -11,7 +11,7 @@ import com.example.hospitalmanagement.R
 import com.example.hospitalmanagement.base.BaseFragment
 import com.example.hospitalmanagement.databinding.FragmentLoginBinding
 import com.example.hospitalmanagement.utils.shakeErrorView
-import com.example.hospitalmanagement.utils.showToast
+import com.example.hospitalmanagement.utils.showMessage
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -67,12 +67,12 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginContract.ViewModel
     private fun handleStates(state: LoginContract.State?) {
         when (state) {
             is LoginContract.State.ShowErrorMessage ->
-                showToast(state.uiMessage)
+                showMessage(state.uiMessage)
 
             is LoginContract.State.ShowThrowableMessage ->
-                showToast(state.throwable.message)
+                showMessage(state.throwable.message)
 
-            null -> showToast(getString(R.string.something_went_wrong))
+            null -> showMessage(getString(R.string.something_went_wrong))
         }
     }
 

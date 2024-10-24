@@ -1,4 +1,4 @@
-package com.example.hospitalmanagement.adapters
+package com.example.hospitalmanagement.adapters.doctor
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

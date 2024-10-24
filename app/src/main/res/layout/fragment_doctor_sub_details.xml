@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvName"
+        style="@style/tv_details_style"
+        android:text="@string/patient_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvPatientName"
+        style="@style/tv_Patient_details_style"
+        tools:text="@string/patient_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvName" />
+
+
+    <TextView
+        android:id="@+id/tvAge"
+        style="@style/tv_details_style"
+        android:text="@string/age"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvName" />
+
+    <TextView
+        android:id="@+id/tvPatientAge"
+        style="@style/tv_Patient_details_style"
+        tools:text="@string/patient_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvAge" />
+
+
+    <TextView
+        android:id="@+id/tvPhoneNumber"
+        style="@style/tv_details_style"
+        android:text="@string/phone_number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvAge" />
+
+    <TextView
+        android:id="@+id/tvPatientNumber"
+        style="@style/tv_Patient_details_style"
+        tools:text="@string/patient_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvPhoneNumber" />
+
+
+    <TextView
+        android:id="@+id/tvDate"
+        style="@style/tv_details_style"
+        android:text="@string/patient_date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPhoneNumber" />
+
+    <TextView
+        android:id="@+id/tvPatientDate"
+        style="@style/tv_Patient_details_style"
+        tools:text="@string/patient_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvDate" />
+
+
+    <TextView
+        android:id="@+id/tvDoctor"
+        style="@style/tv_details_style"
+        android:text="@string/doctor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDate" />
+
+    <TextView
+        android:id="@+id/tvPatientDoctor"
+        style="@style/tv_Patient_details_style"
+        tools:text="@string/patient_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvDoctor" />
+
+
+    <TextView
+        android:id="@+id/tvNurse"
+        style="@style/tv_details_style"
+        android:text="@string/nurce"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDoctor" />
+
+    <TextView
+        android:id="@+id/tvPatientNurse"
+        style="@style/tv_Patient_details_style"
+        tools:text="@string/patient_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvNurse" />
+
+    <TextView
+        android:id="@+id/tvStatus"
+        style="@style/tv_details_style"
+        android:text="@string/status"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvNurse" />
+
+    <TextView
+        android:id="@+id/tvPatientStatus"
+        style="@style/tv_Patient_details_style"
+        tools:text="@string/patient_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvStatus" />
+
+    <TextView
+        android:id="@+id/tvDescription"
+        style="@style/tv_details_style"
+        android:text="@string/case_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvStatus" />
+
+    <TextView
+        android:id="@+id/tvPatientDescription"
+        style="@style/tv_Patient_details_style"
+        android:gravity="start"
+        android:layout_marginTop="16dp"
+        android:ellipsize="end"
+        android:maxLines="3"
+        tools:text="@string/case_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tvDescription"
+        app:layout_constraintTop_toBottomOf="@id/tvDescription"
+       />
+
+<!--    <com.google.android.material.button.MaterialButton-->
+<!--        android:id="@+id/btnAddNurce"-->
+<!--        style="@style/btn_details_add"-->
+<!--        android:text="@string/add_nurse"-->
+<!--        android:paddingStart="5dp"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/btnRequest"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tvPatientDescription" />-->
+
+<!--    <com.google.android.material.button.MaterialButton-->
+<!--        android:id="@+id/btnRequest"-->
+<!--        style="@style/btn_details_add"-->
+<!--        android:text="@string/request"-->
+<!--        android:paddingStart="8dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/btnAddNurce"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tvPatientDescription" />-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,4 +12,7 @@ const val MANAGER = "manger"
 const val ANALYSIS = "analysis"
 const val ACCEPTED = "accept"
 const val REJECTED = "reject"
+const val CASE = "Case"
+const val MEDICAL_RECORD = "Medical record"
+const val MEDICAL_MEASUREMENT = "Medical measurement"
 

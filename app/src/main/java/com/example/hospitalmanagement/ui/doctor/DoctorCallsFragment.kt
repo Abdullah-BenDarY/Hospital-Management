@@ -9,12 +9,12 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.domain.models.DoctorCallsData
 import com.example.hospitalmanagement.R
-import com.example.hospitalmanagement.adapters.AdapterDoctorCalls
+import com.example.hospitalmanagement.adapters.doctor.AdapterDoctorCalls
 import com.example.hospitalmanagement.base.BaseFragment
 import com.example.hospitalmanagement.databinding.FragmentDoctorCallsBinding
 import com.example.hospitalmanagement.utils.ACCEPTED
 import com.example.hospitalmanagement.utils.REJECTED
-import com.example.hospitalmanagement.utils.showToast
+import com.example.hospitalmanagement.utils.showMessage
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -80,9 +80,9 @@ class DoctorCallsFragment : BaseFragment<FragmentDoctorCallsBinding , DoctorCont
 
     private fun handleStates(state: DoctorContract.State?) {
         when (state) {
-            is DoctorContract.State.ShowErrorMessage -> showToast(state.uiMessage)
-            is DoctorContract.State.ShowThrowableMessage -> showToast(state.throwable.message)
-            null -> showToast(getString(R.string.something_went_wrong))
+            is DoctorContract.State.ShowErrorMessage -> showMessage(state.uiMessage)
+            is DoctorContract.State.ShowThrowableMessage -> showMessage(state.throwable.message)
+            null -> showMessage(getString(R.string.something_went_wrong))
         }
     }
 
