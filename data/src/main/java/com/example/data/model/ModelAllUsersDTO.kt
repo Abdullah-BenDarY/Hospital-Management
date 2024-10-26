@@ -1,4 +1,4 @@
-package com.example.data.data.model
+package com.example.data.model
 
 import android.os.Parcelable
 import com.example.domain.models.ModelAllUsers

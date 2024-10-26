@@ -1,16 +1,16 @@
-package com.example.data.data.dataSource
+package com.example.data.dataSource
 
 
-import com.example.data.data.dataSource.dataSourcesContract.AuthOfflineDataSource
-import com.example.data.data.dataSource.dataSourcesContract.AuthOnlineDataSource
-import com.example.data.data.dataSource.dataSourcesContract.DoctorDataSource
-import com.example.data.data.dataSource.dataSourcesContract.HrDataSource
-import com.example.data.data.dataSource.dataSourcesContract.ProfileDataSource
-import com.example.data.data.dataSource.dataSourcesImpl.AuthOfflineDataSourceImpl
-import com.example.data.data.dataSource.dataSourcesImpl.AuthOnlineDataSourceImpl
-import com.example.data.data.dataSource.dataSourcesImpl.DoctorDataSourceImpl
-import com.example.data.data.dataSource.dataSourcesImpl.HrDataSourceImpl
-import com.example.data.data.dataSource.dataSourcesImpl.ProfileDataSourceImpl
+import com.example.data.dataSource.dataSourcesContract.AuthOfflineDataSource
+import com.example.data.dataSource.dataSourcesContract.AuthOnlineDataSource
+import com.example.data.dataSource.dataSourcesContract.DoctorDataSource
+import com.example.data.dataSource.dataSourcesContract.HrDataSource
+import com.example.data.dataSource.dataSourcesContract.ProfileDataSource
+import com.example.data.dataSource.dataSourcesImpl.AuthOfflineDataSourceImpl
+import com.example.data.dataSource.dataSourcesImpl.AuthOnlineDataSourceImpl
+import com.example.data.dataSource.dataSourcesImpl.DoctorDataSourceImpl
+import com.example.data.dataSource.dataSourcesImpl.HrDataSourceImpl
+import com.example.data.dataSource.dataSourcesImpl.ProfileDataSourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

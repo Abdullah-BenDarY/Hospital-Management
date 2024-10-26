@@ -1,10 +1,10 @@
-package com.example.data.data.dataSource.dataSourcesImpl
+package com.example.data.dataSource.dataSourcesImpl
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
-import com.example.data.data.dataSource.dataSourcesContract.AuthOfflineDataSource
+import com.example.data.dataSource.dataSourcesContract.AuthOfflineDataSource
 import com.example.domain.models.ModelLogin
 import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow

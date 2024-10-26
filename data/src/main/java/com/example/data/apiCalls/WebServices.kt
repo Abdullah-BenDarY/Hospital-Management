@@ -1,8 +1,8 @@
-package com.example.data.data.apiCalls
+package com.example.data.apiCalls
 
 
-import com.example.data.data.model.ModelAllUsersDTO
-import com.example.data.data.model.ModelLoginDTO
+import com.example.data.model.ModelAllUsersDTO
+import com.example.data.model.ModelLoginDTO
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET

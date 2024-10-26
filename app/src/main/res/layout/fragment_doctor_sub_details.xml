@@ -121,29 +121,34 @@
         android:gravity="start"
         android:layout_marginTop="16dp"
         android:ellipsize="end"
-        android:maxLines="3"
+        android:maxLines="5"
         tools:text="@string/case_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/tvDescription"
         app:layout_constraintTop_toBottomOf="@id/tvDescription"
        />
 
-<!--    <com.google.android.material.button.MaterialButton-->
-<!--        android:id="@+id/btnAddNurce"-->
-<!--        style="@style/btn_details_add"-->
-<!--        android:text="@string/add_nurse"-->
-<!--        android:paddingStart="5dp"-->
-<!--        app:layout_constraintEnd_toStartOf="@+id/btnRequest"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/tvPatientDescription" />-->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAddNurce"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        style="@style/btn_details_add"
+        android:paddingHorizontal="12dp"
+        android:text="@string/add_nurse"
+        app:icon="@drawable/ic_add"
+        app:layout_constraintEnd_toStartOf="@+id/btnRequest"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPatientDescription" />
 
-<!--    <com.google.android.material.button.MaterialButton-->
-<!--        android:id="@+id/btnRequest"-->
-<!--        style="@style/btn_details_add"-->
-<!--        android:text="@string/request"-->
-<!--        android:paddingStart="8dp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/btnAddNurce"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/tvPatientDescription" />-->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnRequest"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        style="@style/btn_details_add"
+        app:icon="@drawable/ic_add"
+        android:text="@string/request"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnAddNurce"
+        app:layout_constraintTop_toBottomOf="@id/tvPatientDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

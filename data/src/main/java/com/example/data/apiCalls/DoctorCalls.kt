@@ -1,8 +1,9 @@
-package com.example.data.data.apiCalls
+package com.example.data.apiCalls
 
-import com.example.data.data.model.ModelCallsResponseDTO
-import com.example.data.data.model.ModelDoctorCallsDTO
-import com.example.data.data.model.ModelDoctorCasesDTO
+import com.example.data.model.ModelCallsResponseDTO
+import com.example.data.model.ModelCaseDetailsDTO
+import com.example.data.model.ModelDoctorCallsDTO
+import com.example.data.model.ModelDoctorCasesDTO
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -23,5 +24,11 @@ interface DoctorCalls {
     ): ModelCallsResponseDTO
 
     @GET("case")
-    suspend fun getAllCases():ModelDoctorCasesDTO
+    suspend fun getAllCases(): ModelDoctorCasesDTO
+
+    @GET("case/{id}")
+    suspend fun caseDetails(
+        @Path("id") id: Int
+    ): ModelCaseDetailsDTO
+
 }
