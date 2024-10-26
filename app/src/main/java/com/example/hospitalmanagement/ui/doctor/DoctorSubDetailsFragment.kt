@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.domain.models.CaseData
 import com.example.hospitalmanagement.R
 import com.example.hospitalmanagement.base.BaseFragment
@@ -69,6 +70,9 @@ class DoctorSubDetailsFragment : BaseFragment<FragmentDoctorSubDetailsBinding, D
             }
             btnAddNurce.setOnClickListener {
                 showMessage("Nurse Added")
+            }
+            btnRequest.setOnClickListener {
+                findNavController().navigate(CaseDetailsFragmentDirections.actionToDoctorRequestDialog(caseId!!))
             }
         }
     }

@@ -115,8 +115,32 @@
         <item name="android:layout_marginBottom">12dp</item>
         <item name="iconGravity">textStart</item>
         <item name="iconSize">35dp</item>
-
     </style>
+
+    // bottom sheet styles
+    <style name="ButtonToggleStyle" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:textColor">@drawable/selector_button_background</item>
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="strokeColor">@drawable/selector_button_background</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="boxStrokeWidthFocused">1.5dp</item>
+        <item name="android:layout_marginTop">30dp</item>
+        <item name="cornerRadius">10dp</item>
+        <item name="iconTint">@drawable/selector_button_background</item>
+        <item name="iconGravity">textTop</item>
+        <item name="iconPadding">8dp</item>
+        <item name="iconSize">30dp</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="btn_request">
+        <item name="android:layout_marginVertical">30dp</item>
+        <item name="backgroundTint">@color/mintGreen</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+        <item name="cornerRadius">10dp</item>
+    </style>
+
 
 
 </resources>

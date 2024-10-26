@@ -1,4 +1,4 @@
-package com.example.hospitalmanagement
+package com.example.hospitalmanagement.ui.doctor
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,8 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.hospitalmanagement.base.BaseFragment
 import com.example.hospitalmanagement.databinding.FragmentCaseMedicalMeasurementBinding
-import com.example.hospitalmanagement.ui.doctor.DoctorContract
-import com.example.hospitalmanagement.ui.doctor.DoctorViewModel
 import com.example.hospitalmanagement.utils.showMessage
 import dagger.hilt.android.AndroidEntryPoint
 
