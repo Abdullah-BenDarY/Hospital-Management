@@ -1,9 +1,8 @@
-package com.example.data.data.model
+package com.example.data.model
 
 import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
 import com.example.domain.models.CasesItem
-import com.example.domain.models.ModelDoctorCalls
 import com.example.domain.models.ModelDoctorCases
 import com.google.gson.annotations.SerializedName
 

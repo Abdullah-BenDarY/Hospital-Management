@@ -1,9 +1,10 @@
-package com.example.data.data.diModules
+package com.example.data.diModules
 
 import android.util.Log
-import com.example.data.data.apiCalls.DoctorCalls
-import com.example.data.data.apiCalls.WebServices
-import com.example.data.data.interceptor.InterceptorsModule
+import com.example.data.BASE_URL
+import com.example.data.apiCalls.DoctorCalls
+import com.example.data.apiCalls.WebServices
+import com.example.data.interceptor.InterceptorsModule
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
@@ -64,7 +65,7 @@ object ApiModule {
                         gsonConverterFactory: GsonConverterFactory, ):Retrofit {
         return Retrofit.Builder()
                 .client(okHttpClient)
-                .baseUrl("https://hospital.elhossiny.net/api/v1/")
+                .baseUrl(BASE_URL)
                 .addConverterFactory(gsonConverterFactory)
                 .build()
     }

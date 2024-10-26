@@ -1,6 +1,6 @@
 package com.example.data.repoisitoriesImpl
 
-import com.example.data.data.dataSource.dataSourcesContract.ProfileDataSource
+import com.example.data.dataSource.dataSourcesContract.ProfileDataSource
 import com.example.domain.ApiResult
 import com.example.domain.models.ModelLogin
 import com.example.domain.repoisitories.ProfileRepo

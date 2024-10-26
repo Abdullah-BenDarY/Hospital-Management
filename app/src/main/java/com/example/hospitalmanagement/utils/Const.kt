@@ -1,6 +1,5 @@
 package com.example.hospitalmanagement.utils
 
-const val BASE_URL = "https://hospital.elhossiny.net/api/v1/"
 const val REQUIRED = "required"
 
 const val ALL ="All"

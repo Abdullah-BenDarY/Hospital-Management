@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.domain.ApiResult
 import com.example.domain.useCases.DoctorUseCases
-import com.example.domain.useCases.ProfileUseCase
 import com.example.myapp.SingleLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -28,7 +27,41 @@ class DoctorViewModel @Inject constructor(
         when (intent) {
             is DoctorContract.Intent.GetAllCalls -> getAllCalls()
             is DoctorContract.Intent.AcceptOrRejectCall -> acceptOrRejectCall(intent.id, intent.status)
-            DoctorContract.Intent.GetDoctorCases -> getDoctorCases()
+            is DoctorContract.Intent.GetDoctorCases -> getDoctorCases()
+            is DoctorContract.Intent.GetCaseDetails -> getCaseDetails(intent.id)
+        }
+    }
+
+    private fun getCaseDetails(id: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            doctorUseCases.invokeCaseDetails(id)
+                .collect { result ->
+                    when (result) {
+                        is ApiResult.Success ->
+                            if (result.data.status == 1) {
+                                _event.emit(
+                                    DoctorContract.Event.ShowCaseData(
+                                        result.data
+                                    )
+                                )
+                            } else _state.postValue(
+                                DoctorContract.State.ShowErrorMessage(
+                                    result.data.message ?: "Unkonwn Error"
+                                )
+                            )
+
+                        is ApiResult.Failure -> _state.postValue(
+                            DoctorContract.State.ShowThrowableMessage(
+                                result.throwable
+                            )
+                        )
+
+                        null -> DoctorContract.State.ShowErrorMessage(
+                            "Unkonwn Error"
+                        )
+                    }
+
+                }
         }
     }
 
