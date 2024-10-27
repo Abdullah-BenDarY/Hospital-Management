@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.hospitalmanagement.base.BaseFragment
 import com.example.hospitalmanagement.databinding.FragmentCaseMedicalRecordBinding
+import com.example.hospitalmanagement.ui.doctor.viewModel.DoctorContract
+import com.example.hospitalmanagement.ui.doctor.viewModel.DoctorViewModel
 import com.example.hospitalmanagement.utils.showMessage
 import dagger.hilt.android.AndroidEntryPoint
 

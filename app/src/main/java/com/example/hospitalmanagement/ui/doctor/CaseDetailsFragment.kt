@@ -13,6 +13,8 @@ import com.example.hospitalmanagement.R
 import com.example.hospitalmanagement.adapters.doctor.AdapterCaseDetailsTabs
 import com.example.hospitalmanagement.base.BaseFragment
 import com.example.hospitalmanagement.databinding.FragmentCaseDetailsBinding
+import com.example.hospitalmanagement.ui.doctor.viewModel.DoctorContract
+import com.example.hospitalmanagement.ui.doctor.viewModel.DoctorViewModel
 import com.example.hospitalmanagement.utils.CASE
 import com.example.hospitalmanagement.utils.MEDICAL_MEASUREMENT
 import com.example.hospitalmanagement.utils.MEDICAL_RECORD

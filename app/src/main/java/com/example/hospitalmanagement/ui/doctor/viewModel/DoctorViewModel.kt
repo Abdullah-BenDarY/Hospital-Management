@@ -1,4 +1,4 @@
-package com.example.hospitalmanagement.ui.doctor
+package com.example.hospitalmanagement.ui.doctor.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
@@ -9,7 +9,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
