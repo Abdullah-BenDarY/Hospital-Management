@@ -87,24 +87,24 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_email"
-            android:layout_width="match_parent"
             style="@style/ietStyle"
-            android:hint="@string/email"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:hint="@string/email"
             android:inputType="textEmailAddress" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <ImageView
-        android:id="@+id/cursor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="4dp"
-        android:src="@drawable/ic_cursor"
-        app:layout_constraintBottom_toBottomOf="@id/tilEmail"
-        app:layout_constraintStart_toStartOf="@id/tilEmail"
-        app:layout_constraintTop_toTopOf="@id/tilEmail" />
+<!--    <ImageView-->
+<!--        android:id="@+id/cursor"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="40dp"-->
+<!--        android:layout_marginTop="4dp"-->
+<!--        android:src="@drawable/ic_cursor"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/tilEmail"-->
+<!--        app:layout_constraintStart_toStartOf="@id/tilEmail"-->
+<!--        app:layout_constraintTop_toTopOf="@id/tilEmail" />-->
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilPassword"
@@ -129,16 +129,16 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <ImageView
-        android:id="@+id/cursor1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="4dp"
-        android:src="@drawable/ic_cursor"
-        app:layout_constraintBottom_toBottomOf="@id/tilPassword"
-        app:layout_constraintStart_toStartOf="@id/tilPassword"
-        app:layout_constraintTop_toTopOf="@id/tilPassword" />
+<!--    <ImageView-->
+<!--        android:id="@+id/cursor1"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="40dp"-->
+<!--        android:layout_marginTop="4dp"-->
+<!--        android:src="@drawable/ic_cursor"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/tilPassword"-->
+<!--        app:layout_constraintStart_toStartOf="@id/tilPassword"-->
+<!--        app:layout_constraintTop_toTopOf="@id/tilPassword" />-->
 
 
     <TextView

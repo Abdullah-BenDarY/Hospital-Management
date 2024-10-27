@@ -4,6 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <View
+        android:id="@+id/dismiss"
+        android:layout_width="0dp"
+        android:layout_height="3dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/dismiss"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent=".3" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnMedicalRecord"
         style="@style/ButtonToggleStyle"
@@ -35,11 +46,12 @@
         android:id="@+id/btnRequest"
         style="@style/btn_request"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:text="@string/request"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnMedicalRecord"
-        app:layout_constraintWidth_percent="0.88" />
+        app:layout_constraintWidth_percent="0.88"
+    />
 </androidx.constraintlayout.widget.ConstraintLayout>

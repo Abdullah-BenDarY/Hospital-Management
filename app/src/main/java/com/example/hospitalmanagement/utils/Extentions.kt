@@ -22,7 +22,7 @@ fun Fragment.showMessage(message: Any?) {
 
 fun shakeErrorView(view: View) {
     val shakeAnimation = ObjectAnimator.ofFloat(view, "translationX", 0f, -10f, 10f, -10f, 10f, 0f)
-    shakeAnimation.duration = 800
+    shakeAnimation.duration = 300
     shakeAnimation.start() }
 
 fun animateSplashImageView(view: View) {
