@@ -23,6 +23,11 @@ class DoctorDataSourceImpl @Inject constructor
             apiService.acceptOrRejectCall(id = id, status = status).toModelCallsResponse()
         }
 
+    override fun invokeEndCase(id: Int): Flow<ApiResult<ModelCallsResponse>?> =
+        executeApi {
+            apiService.endCase(id).toModelCallsResponse()
+        }
+
     override fun getAllCases(): Flow<ApiResult<ModelDoctorCases>?> =
         executeApi {
             apiService.getAllCases().toDoctorCases()
@@ -30,7 +35,7 @@ class DoctorDataSourceImpl @Inject constructor
 
     override fun getCaseDetails(id: Int): Flow<ApiResult<ModelCaseDetails>?> =
         executeApi {
-            apiService.caseDetails(id = id).toCaseStatus()
+            apiService.caseDetails(id).toCaseStatus()
         }
 
     }

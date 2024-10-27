@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.hospitalmanagement.R
@@ -15,7 +16,9 @@ import com.example.hospitalmanagement.databinding.FragmentCaseDetailsBinding
 import com.example.hospitalmanagement.utils.CASE
 import com.example.hospitalmanagement.utils.MEDICAL_MEASUREMENT
 import com.example.hospitalmanagement.utils.MEDICAL_RECORD
+import com.example.hospitalmanagement.utils.showMessage
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class CaseDetailsFragment : BaseFragment<FragmentCaseDetailsBinding, DoctorContract.ViewModel>() {
@@ -37,6 +40,7 @@ class CaseDetailsFragment : BaseFragment<FragmentCaseDetailsBinding, DoctorContr
         binding.rvTabs.adapter = adapterDoctorCalls
         setOnTabsClick(CASE)
         initClickListeners()
+        observeEndCase()
     }
 
     private fun initClickListeners() {
@@ -44,9 +48,38 @@ class CaseDetailsFragment : BaseFragment<FragmentCaseDetailsBinding, DoctorContr
             btnBack.setOnClickListener {
                 findNavController().navigateUp()
             }
+            btnEndCase.setOnLongClickListener {
+                doctorViewModel.doIntent(DoctorContract.Intent.EndCase(args.caseId))
+                true
+            }
         }
         adapterDoctorCalls.setOnClick {
             setOnTabsClick(it)
+        }
+    }
+
+    private fun observeEndCase() {
+        viewModel.states.observe(viewLifecycleOwner, this::handleStates)
+
+        lifecycleScope.launch {
+            viewModel.events.collect {
+                handleEvents(it)
+            }
+        }
+    }
+
+    private fun handleEvents(event: DoctorContract.Event) {
+        when (event) {
+            DoctorContract.Event.InitialEvent -> {}
+            is DoctorContract.Event.CaseEnded -> onEndCaseaClickActions()
+        }
+    }
+
+    private fun handleStates(state: DoctorContract.State?) {
+        when (state) {
+            is DoctorContract.State.ShowErrorMessage -> showMessage(state.uiMessage)
+            is DoctorContract.State.ShowThrowableMessage -> showMessage(state.throwable.message)
+            null -> showMessage(getString(R.string.something_went_wrong))
         }
     }
 

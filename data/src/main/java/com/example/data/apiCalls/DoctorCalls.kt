@@ -31,4 +31,9 @@ interface DoctorCalls {
         @Path("id") id: Int
     ): ModelCaseDetailsDTO
 
+    @PUT("calls/{id}")
+    suspend fun endCase(
+        @Path("id") id: Int
+    ): ModelCallsResponseDTO
+
 }

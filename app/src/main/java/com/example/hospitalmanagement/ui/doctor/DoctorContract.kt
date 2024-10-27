@@ -21,6 +21,7 @@ interface DoctorContract{
         data class AcceptOrRejectCall(val id:Int, val status:String):Intent()
         data object GetDoctorCases:Intent()
         data class GetCaseDetails(val id:Int):Intent()
+        data class EndCase(val id:Int):Intent()
 
     }
 
@@ -37,6 +38,7 @@ interface DoctorContract{
         data class ShowCallStatus(val modelCallsResponse: ModelCallsResponse) : Event
         data class ShowDoctorCases(val modelDoctorCases: ModelDoctorCases) : Event
         data class ShowCaseData(val modelCaseDetails: ModelCaseDetails) : Event
+        data object CaseEnded: Event
 
     }
 }

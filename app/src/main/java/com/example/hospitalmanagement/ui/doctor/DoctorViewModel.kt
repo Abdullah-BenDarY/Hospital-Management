@@ -9,6 +9,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -29,6 +30,39 @@ class DoctorViewModel @Inject constructor(
             is DoctorContract.Intent.AcceptOrRejectCall -> acceptOrRejectCall(intent.id, intent.status)
             is DoctorContract.Intent.GetDoctorCases -> getDoctorCases()
             is DoctorContract.Intent.GetCaseDetails -> getCaseDetails(intent.id)
+            is DoctorContract.Intent.EndCase -> endCase(intent.id)
+        }
+    }
+
+    private fun endCase(id: Int) {
+        viewModelScope.launch (Dispatchers.IO){
+            doctorUseCases.invokeEndCase(id)
+                .collect{result ->
+                    when(result){
+                        is ApiResult.Success ->
+                            if (result.data.status == 1) {
+                                _event.emit(
+                                    DoctorContract.Event.CaseEnded
+                                )
+                            } else _state.postValue(
+                                DoctorContract.State.ShowErrorMessage(
+                                    result.data.message ?: "Unkonwn Error"
+                                )
+                            )
+
+                        is ApiResult.Failure -> _state.postValue(
+                            DoctorContract.State.ShowThrowableMessage(
+                                result.throwable
+                            )
+                        )
+
+                        null -> DoctorContract.State.ShowErrorMessage(
+                            "Unkonwn Error"
+                        )
+                    }
+
+                }
+
         }
     }
 
