@@ -12,6 +12,8 @@ import com.example.hospitalmanagement.R
 import com.example.hospitalmanagement.adapters.doctor.AdapterDoctorCases
 import com.example.hospitalmanagement.base.BaseFragment
 import com.example.hospitalmanagement.databinding.FragmentDoctorCasesBinding
+import com.example.hospitalmanagement.ui.doctor.viewModel.DoctorContract
+import com.example.hospitalmanagement.ui.doctor.viewModel.DoctorViewModel
 import com.example.hospitalmanagement.utils.showMessage
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -60,7 +62,7 @@ class DoctorCasesFragment : BaseFragment<FragmentDoctorCasesBinding, DoctorContr
         }
     }
 
-    private fun handleEvents(event: DoctorContract.Event , id :Int? = null) {
+    private fun handleEvents(event: DoctorContract.Event, id :Int? = null) {
         when (event) {
             DoctorContract.Event.InitialEvent -> {}
             is DoctorContract.Event.ShowDoctorCases ->

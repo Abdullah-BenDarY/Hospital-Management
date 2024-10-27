@@ -8,6 +8,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.hospitalmanagement.base.BaseBottomSheet
 import com.example.hospitalmanagement.databinding.BottomSheetRequestBinding
+import com.example.hospitalmanagement.ui.doctor.viewModel.DoctorContract
+import com.example.hospitalmanagement.ui.doctor.viewModel.DoctorViewModel
 import com.example.hospitalmanagement.utils.showMessage
 import com.google.android.material.button.MaterialButton
 import dagger.hilt.android.AndroidEntryPoint

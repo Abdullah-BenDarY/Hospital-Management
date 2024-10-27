@@ -12,5 +12,6 @@ interface DoctorRepo {
     fun getAllCalls(): Flow<ApiResult<ModelDoctorCalls>?>
     fun getAllCases(): Flow<ApiResult<ModelDoctorCases>?>
     fun getCaseDetails(id: Int): Flow<ApiResult<ModelCaseDetails>?>
-    fun acceptRejectCall (id: Int, status: String): Flow<ApiResult<ModelCallsResponse>?>
+    fun acceptRejectCall(id: Int, status: String): Flow<ApiResult<ModelCallsResponse>?>
+    fun endCase(id: Int): Flow<ApiResult<ModelCallsResponse>?>
 }

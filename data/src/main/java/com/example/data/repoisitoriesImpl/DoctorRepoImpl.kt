@@ -22,4 +22,6 @@ class DoctorRepoImpl @Inject constructor(
 
     override fun acceptRejectCall(id: Int, status: String): Flow<ApiResult<ModelCallsResponse>?> =
         doctorDataSource.acceptRejectCalls(id = id, status = status)
+
+    override fun endCase(id: Int): Flow<ApiResult<ModelCallsResponse>?> = doctorDataSource.invokeEndCase(id)
 }

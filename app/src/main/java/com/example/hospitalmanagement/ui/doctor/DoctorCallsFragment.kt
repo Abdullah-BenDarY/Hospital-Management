@@ -12,6 +12,8 @@ import com.example.hospitalmanagement.R
 import com.example.hospitalmanagement.adapters.doctor.AdapterDoctorCalls
 import com.example.hospitalmanagement.base.BaseFragment
 import com.example.hospitalmanagement.databinding.FragmentDoctorCallsBinding
+import com.example.hospitalmanagement.ui.doctor.viewModel.DoctorContract
+import com.example.hospitalmanagement.ui.doctor.viewModel.DoctorViewModel
 import com.example.hospitalmanagement.utils.ACCEPTED
 import com.example.hospitalmanagement.utils.REJECTED
 import com.example.hospitalmanagement.utils.showMessage
@@ -65,7 +67,7 @@ class DoctorCallsFragment : BaseFragment<FragmentDoctorCallsBinding , DoctorCont
         }
     }
 
-    private fun handleEvents(event: DoctorContract.Event , id :Int? = null) {
+    private fun handleEvents(event: DoctorContract.Event, id :Int? = null) {
         when (event) {
             DoctorContract.Event.InitialEvent -> {}
             is DoctorContract.Event.ShowCallsDataData ->
