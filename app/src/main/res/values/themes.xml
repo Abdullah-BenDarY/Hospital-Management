@@ -15,7 +15,16 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <!--    round floating action button -->
+    // Bottom sheet dialog theme
+    <style name="AppBottomSheetDialogTheme"
+        parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bottom_sheet_dialog_shape</item>
+    </style>
+
+    // round floating action button
     <style name="CircularShapeOverlay">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>

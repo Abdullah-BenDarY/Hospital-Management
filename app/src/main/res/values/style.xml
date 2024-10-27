@@ -8,6 +8,9 @@
         <item name="boxCornerRadiusTopStart">6dp</item>
         <item name="boxCornerRadiusBottomStart">6dp</item>
         <item name="boxStrokeColor">@color/mintGreen</item>
+        <item name="errorIconTint">@color/red</item>
+        <item name="boxStrokeErrorColor">@color/red</item>
+        <item name="errorTextColor">@color/red</item>
         <item name="boxBackgroundMode">outline</item>
         <item name="boxBackgroundColor">@color/white</item>
         <item name="boxStrokeWidth">1dp</item>
@@ -22,11 +25,10 @@
 
     <style name="ietStyle">
         <item name="maxLines">1</item>
-        <item name="android:paddingStart">50dp</item>
+        <item name="android:paddingStart">40dp</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:gravity">center_vertical</item>
-        <item name="android:drawablePadding">15dp</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
 
@@ -82,8 +84,7 @@
         <item name="cornerRadius">4dp</item>
         <item name="android:gravity">center</item>
         <item name="strokeColor">@color/gray</item>
-        <item name="strokeWidth">1dp</item>
-        <item name="boxStrokeWidthFocused">2dp</item>
+        <item name="strokeWidth">0.6dp</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">12sp</item>
     </style>
@@ -115,8 +116,32 @@
         <item name="android:layout_marginBottom">12dp</item>
         <item name="iconGravity">textStart</item>
         <item name="iconSize">35dp</item>
-
     </style>
+
+    // bottom sheet styles
+    <style name="ButtonToggleStyle" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:textColor">@drawable/selector_button_background</item>
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="strokeColor">@drawable/selector_button_background</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="boxStrokeWidthFocused">2dp</item>
+        <item name="android:layout_marginTop">30dp</item>
+        <item name="cornerRadius">10dp</item>
+        <item name="iconTint">@drawable/selector_button_background</item>
+        <item name="iconGravity">textTop</item>
+        <item name="iconPadding">8dp</item>
+        <item name="iconSize">30dp</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="btn_request">
+        <item name="android:layout_marginVertical">30dp</item>
+        <item name="backgroundTint">@color/mintGreen</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+        <item name="cornerRadius">10dp</item>
+    </style>
+
 
 
 </resources>

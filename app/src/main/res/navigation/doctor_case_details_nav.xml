@@ -23,12 +23,12 @@
         tools:layout="@layout/fragment_doctor_sub_details"/>
     <fragment
         android:id="@+id/caseMedicalRecordFragment"
-        android:name="com.example.hospitalmanagement.CaseMedicalRecordFragment"
+        android:name="com.example.hospitalmanagement.ui.doctor.CaseMedicalRecordFragment"
         android:label="fragment_case_medical_record"
         tools:layout="@layout/fragment_case_medical_record" />
     <fragment
         android:id="@+id/caseMedicalMeasurementFragment"
-        android:name="com.example.hospitalmanagement.CaseMedicalMeasurementFragment"
+        android:name="com.example.hospitalmanagement.ui.doctor.CaseMedicalMeasurementFragment"
         android:label="fragment_case_medical_measurement"
         tools:layout="@layout/fragment_case_medical_measurement" />
 </navigation>

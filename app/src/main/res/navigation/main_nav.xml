@@ -32,6 +32,9 @@
         app:exitAnim="@anim/slide_out_left"
         app:popEnterAnim="@anim/slide_in_left"
         app:popExitAnim="@anim/slide_out_right" />
+    <action
+        android:id="@+id/action_to_doctor_request_dialog"
+        app:destination="@id/requestBottomSheet" />
 
     <fragment
         android:id="@+id/loginFragment"
@@ -138,4 +141,15 @@
             android:name="caseId"
             app:argType="integer" />
     </fragment>
+
+    <dialog
+        android:id="@+id/requestBottomSheet"
+        android:name="com.example.hospitalmanagement.ui.doctor.RequestBottomSheet"
+        android:label="RequestBottomSheet"
+        tools:layout="@layout/bottom_sheet_request">
+        <argument
+            android:name="caseId"
+            app:argType="integer" />
+    </dialog>
+
 </navigation>

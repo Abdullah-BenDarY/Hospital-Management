@@ -8,8 +8,6 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.hospitalmanagement.CaseMedicalMeasurementFragment
-import com.example.hospitalmanagement.CaseMedicalRecordFragment
 import com.example.hospitalmanagement.R
 import com.example.hospitalmanagement.adapters.doctor.AdapterCaseDetailsTabs
 import com.example.hospitalmanagement.base.BaseFragment

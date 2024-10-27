@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -36,6 +37,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginContract.ViewModel
 
 
      private fun initClicks() {
+         setupTextWatchers()
         binding.btnLogin.setOnClickListener {
             doLogin()
         }
@@ -76,28 +78,34 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginContract.ViewModel
         }
     }
 
-    private fun doLogin() {
+    private fun setupTextWatchers() {
+        binding.tilEmail.editText?.addTextChangedListener {
+            binding.tilEmail.error = null
+        }
+        binding.tilPassword.editText?.addTextChangedListener {
+                binding.tilPassword.error = null
+        }
+    }
+
+    private fun doLogin()  {
         val email = binding.etEmail.text.toString()
         val password = binding.etPassword.text.toString()
         val login = viewModel.doIntent(LoginContract.Intent.DoLogin(email, password))
 
         if (email.isBlank()) {
-            binding.etEmail.error = getString(R.string.email_is_required)
-            shakeErrorView(binding.etEmail)
+            binding.tilEmail.error = getString(R.string.email_is_required)
+            shakeErrorView(binding.tilEmail)
             return
         }
         if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            binding.etEmail.error = getString(R.string.enter_a_valid_email)
-            shakeErrorView(binding.etEmail)
+            binding.tilEmail.error = getString(R.string.enter_a_valid_email)
+            shakeErrorView(binding.tilEmail)
             return
         }
         if (password.isBlank()) {
-            binding.etPassword.error = getString(R.string.password_is_required)
-            shakeErrorView(binding.etPassword)
-            return
+            binding.tilPassword.error = getString(R.string.password_is_required)
+            shakeErrorView(binding.tilPassword)
         } else
             return login
     }
-
-
 }
