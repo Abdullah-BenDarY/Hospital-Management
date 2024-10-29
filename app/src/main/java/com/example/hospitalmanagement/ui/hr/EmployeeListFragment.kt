@@ -92,7 +92,6 @@ class EmployeeListFragment :
         }
         setupUsersAdapter(filteredList)
         setupSearch(filteredList)
-
     }
 
     private fun setupUsersAdapter(usersData: List<UsersData>?) {

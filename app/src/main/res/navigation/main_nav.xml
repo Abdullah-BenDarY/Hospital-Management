@@ -25,6 +25,15 @@
         app:exitAnim="@anim/slide_out_left"
         app:popEnterAnim="@anim/slide_in_left"
         app:popExitAnim="@anim/slide_out_right" />
+
+    <action
+        android:id="@+id/global_action_to_addNurseFragment"
+        app:destination="@id/addNurseFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
     <action
         android:id="@+id/global_action_to_employeeListFragment"
         app:destination="@id/employeeListFragment"
@@ -151,5 +160,15 @@
             android:name="caseId"
             app:argType="integer" />
     </dialog>
+
+    <fragment
+        android:id="@+id/addNurseFragment"
+        android:name="com.example.hospitalmanagement.ui.doctor.AddNurseFragment"
+        android:label="fragment_add_nurse"
+        tools:layout="@layout/fragment_add_nurse">
+        <argument
+            android:name="caseId"
+            app:argType="integer" />
+    </fragment>
 
 </navigation>

@@ -133,4 +133,7 @@
     <string name="doctor">Doctor</string>
     <string name="nurce">Nurse</string>
     <string name="case_ended">Case ended</string>
+    <string name="select_nurse">Select Nurse</string>
+    <string name="nurse_aded">Nurse aded</string>
+    <string name="search_for_nurse">Search for nurse</string>
 </resources>

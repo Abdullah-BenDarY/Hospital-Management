@@ -30,6 +30,8 @@ class DoctorViewModel @Inject constructor(
             is DoctorContract.Intent.GetDoctorCases -> getDoctorCases()
             is DoctorContract.Intent.GetCaseDetails -> getCaseDetails(intent.id)
             is DoctorContract.Intent.EndCase -> endCase(intent.id)
+            is DoctorContract.Intent.GetNurseList -> getNursesList()
+            is DoctorContract.Intent.SetNurse -> setNurse(intent.callId, intent.userId)
         }
     }
 
@@ -196,4 +198,70 @@ class DoctorViewModel @Inject constructor(
 
         }
     }
+
+    private fun setNurse(callId: Int, userId: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            doctorUseCases.setNurse(callId, userId)
+                .collect { result ->
+                    when (result) {
+                        is ApiResult.Success ->
+                            if (result.data.status == 1) {
+                                _event.emit(
+                                    DoctorContract.Event.AddNurse
+                                )
+                            } else _state.postValue(
+                                DoctorContract.State.ShowErrorMessage(
+                                    result.data.message ?: "Unkonwn Error"
+                                )
+                            )
+
+                        is ApiResult.Failure -> _state.postValue(
+                            DoctorContract.State.ShowThrowableMessage(
+                                result.throwable
+                            )
+                        )
+
+                        null -> DoctorContract.State.ShowErrorMessage(
+                            "Unkonwn Error"
+                        )
+                    }
+
+                }
+
+        }
+    }
+
+    private fun getNursesList() {
+        viewModelScope.launch(Dispatchers.IO) {
+            doctorUseCases.getNurseList()
+                .collect { result ->
+                    when (result) {
+                        is ApiResult.Success ->
+                            if (result.data.status == 1) {
+                                _event.emit(
+                                    DoctorContract.Event.ShowNurseList(
+                                        result.data
+                                    )
+                                )
+                            } else _state.postValue(
+                                DoctorContract.State.ShowErrorMessage(
+                                    result.data.message ?: "Unkonwn Error"
+                                )
+                            )
+
+                        is ApiResult.Failure -> _state.postValue(
+                            DoctorContract.State.ShowThrowableMessage(
+                                result.throwable
+                            )
+                        )
+
+                        null -> DoctorContract.State.ShowErrorMessage(
+                            "Unkonwn Error"
+                        )
+                    }
+
+                }
+        }
+    }
+
 }
