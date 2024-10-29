@@ -1,9 +1,11 @@
 package com.example.hospitalmanagement.ui.doctor
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -40,17 +42,17 @@ class DoctorSubDetailsFragment : BaseFragment<FragmentDoctorSubDetailsBinding, D
         initClicks()
     }
 
-    private fun observeDoctorCalls(id :Int ?= null) {
+    private fun observeDoctorCalls() {
         viewModel.states.observe(viewLifecycleOwner, this::handleStates)
 
         lifecycleScope.launch {
             viewModel.events.collect {
-                handleEvents(it, id)
+                handleEvents(it)
             }
         }
     }
 
-    private fun handleEvents(event: DoctorContract.Event, id :Int? = null) {
+    private fun handleEvents(event: DoctorContract.Event) {
         when (event) {
             DoctorContract.Event.InitialEvent -> {}
             is DoctorContract.Event.ShowCaseData-> setUpViewUi(event.modelCaseDetails.data!!)
@@ -71,7 +73,7 @@ class DoctorSubDetailsFragment : BaseFragment<FragmentDoctorSubDetailsBinding, D
                 showMessage("Request Sent")
             }
             btnAddNurce.setOnClickListener {
-                showMessage("Nurse Added")
+                findNavController().navigate(CaseDetailsFragmentDirections.globalActionToAddNurseFragment(caseId!!))
             }
             btnRequest.setOnClickListener {
                 findNavController().navigate(CaseDetailsFragmentDirections.actionToDoctorRequestDialog(caseId!!))
@@ -86,10 +88,26 @@ class DoctorSubDetailsFragment : BaseFragment<FragmentDoctorSubDetailsBinding, D
             tvPatientNumber.text = caseData.phone
             tvPatientDate.text = caseData.createdAt
             tvPatientDoctor.text = caseData.doctorId
-            tvPatientNurse.text = caseData.nurseId?:"Not assigned"
+            tvPatientNurse.text = caseData.nurseId ?: "Not assigned"
             tvPatientStatus.text = caseData.caseStatus
             tvPatientDescription.text = caseData.description
+            caseData.nurseId?.isBlank().let {
+                if (it == false) {
+                    onNurseAdedActions()
+                } else return
+            }
         }
     }
 
+    private fun onNurseAdedActions() {
+        binding.apply {
+            btnAddNurce.apply {
+                isEnabled = false
+                iconTint = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.text_header))
+                backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.gray))
+                text = getString(R.string.nurse_aded)
+                setTextColor(ContextCompat.getColor(requireContext(), R.color.text_header))
+            }
+        }
+    }
 }

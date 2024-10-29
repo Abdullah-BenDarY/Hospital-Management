@@ -2,6 +2,7 @@ package com.example.data.dataSource.dataSourcesImpl
 import com.example.data.apiCalls.DoctorCalls
 import com.example.data.dataSource.dataSourcesContract.DoctorDataSource
 import com.example.domain.ApiResult
+import com.example.domain.models.ModelAllUsers
 import com.example.domain.models.ModelCallsResponse
 import com.example.domain.models.ModelCaseDetails
 import com.example.domain.models.ModelDoctorCalls
@@ -26,6 +27,16 @@ class DoctorDataSourceImpl @Inject constructor
     override fun invokeEndCase(id: Int): Flow<ApiResult<ModelCallsResponse>?> =
         executeApi {
             apiService.endCase(id).toModelCallsResponse()
+        }
+
+    override fun getNurseList(): Flow<ApiResult<ModelAllUsers>?> =
+        executeApi {
+            apiService.getNurseList().toModelAllUsers()
+        }
+
+    override fun setNurse(callId: Int, userId: Int): Flow<ApiResult<ModelCallsResponse>?> =
+        executeApi {
+            apiService.addNurse(callId = callId, userId = userId).toModelCallsResponse()
         }
 
     override fun getAllCases(): Flow<ApiResult<ModelDoctorCases>?> =

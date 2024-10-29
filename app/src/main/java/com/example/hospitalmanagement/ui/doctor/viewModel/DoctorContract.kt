@@ -1,6 +1,7 @@
 package com.example.hospitalmanagement.ui.doctor.viewModel
 
 import androidx.lifecycle.LiveData
+import com.example.domain.models.ModelAllUsers
 import com.example.domain.models.ModelCallsResponse
 import com.example.domain.models.ModelCaseDetails
 import com.example.domain.models.ModelDoctorCalls
@@ -21,7 +22,8 @@ interface DoctorContract{
         data object GetDoctorCases: Intent()
         data class GetCaseDetails(val id:Int): Intent()
         data class EndCase(val id:Int): Intent()
-
+        data object GetNurseList: Intent()
+        data class SetNurse(val callId:Int, val userId:Int): Intent()
     }
 
     // viewModel -> view
@@ -38,6 +40,8 @@ interface DoctorContract{
         data class ShowDoctorCases(val modelDoctorCases: ModelDoctorCases) : Event
         data class ShowCaseData(val modelCaseDetails: ModelCaseDetails) : Event
         data object CaseEnded: Event
+        data class ShowNurseList(val modelAllUsers: ModelAllUsers) : Event
+        data object AddNurse : Event
 
     }
 }

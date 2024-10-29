@@ -2,6 +2,7 @@ package com.example.data.repoisitoriesImpl
 
 import com.example.data.dataSource.dataSourcesContract.DoctorDataSource
 import com.example.domain.ApiResult
+import com.example.domain.models.ModelAllUsers
 import com.example.domain.models.ModelCallsResponse
 import com.example.domain.models.ModelCaseDetails
 import com.example.domain.models.ModelDoctorCalls
@@ -24,4 +25,9 @@ class DoctorRepoImpl @Inject constructor(
         doctorDataSource.acceptRejectCalls(id = id, status = status)
 
     override fun endCase(id: Int): Flow<ApiResult<ModelCallsResponse>?> = doctorDataSource.invokeEndCase(id)
+
+    override fun getNurseList(): Flow<ApiResult<ModelAllUsers>?> =doctorDataSource.getNurseList()
+
+    override fun setNurse(callId: Int, userId: Int): Flow<ApiResult<ModelCallsResponse>?> =
+        doctorDataSource.setNurse(callId = callId, userId = userId)
 }
