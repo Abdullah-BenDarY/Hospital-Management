@@ -10,6 +10,6 @@ class DoctorUseCases@Inject constructor(private val doctorRepo: DoctorRepo) {
     fun invokeDoctorCases() = doctorRepo.getAllCases()
     fun invokeCaseDetails(id: Int) = doctorRepo.getCaseDetails(id)
     fun getNurseList()= doctorRepo.getNurseList()
-    fun setNurse(callId: Int, userId: Int) = doctorRepo.setNurse(callId = callId, userId = userId)
+    fun setNurse(callId: Int?, userId: Int?) = doctorRepo.setNurse(callId = callId, userId = userId)
 
 }

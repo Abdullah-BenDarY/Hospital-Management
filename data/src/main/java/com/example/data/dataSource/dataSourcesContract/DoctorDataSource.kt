@@ -15,5 +15,5 @@ interface DoctorDataSource {
     fun acceptRejectCalls(id: Int, status: String): Flow<ApiResult<ModelCallsResponse>?>
     fun invokeEndCase(id: Int): Flow<ApiResult<ModelCallsResponse>?>
     fun getNurseList(): Flow<ApiResult<ModelAllUsers>?>
-    fun setNurse(callId: Int, userId: Int): Flow<ApiResult<ModelCallsResponse>?>
+    fun setNurse(callId: Int?, userId: Int?): Flow<ApiResult<ModelCallsResponse>?>
 }

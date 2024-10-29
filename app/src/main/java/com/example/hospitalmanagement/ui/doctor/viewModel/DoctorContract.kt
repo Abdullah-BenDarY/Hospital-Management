@@ -23,7 +23,7 @@ interface DoctorContract{
         data class GetCaseDetails(val id:Int): Intent()
         data class EndCase(val id:Int): Intent()
         data object GetNurseList: Intent()
-        data class SetNurse(val callId:Int, val userId:Int): Intent()
+        data class SetNurse(val callId:Int?, val userId:Int?): Intent()
     }
 
     // viewModel -> view

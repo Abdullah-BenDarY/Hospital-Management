@@ -55,12 +55,7 @@ class AddNurseFragment : BaseFragment<FragmentAddNurseBinding, DoctorContract.Vi
                 findNavController().navigateUp()
             }
             btnAddNurse.setOnClickListener {
-                doctorViewModel.doIntent(
-                    DoctorContract.Intent.SetNurse(
-                        callId = args.caseId,
-                        userId = nurseId!!
-                    )
-                )
+             invokeAddNurse(nurseId)
             }
         }
         adapterNursesList.setOnClick {
@@ -87,12 +82,12 @@ class AddNurseFragment : BaseFragment<FragmentAddNurseBinding, DoctorContract.Vi
             }
             is DoctorContract.Event.AddNurse ->{
                 onAddNurseClickActions()
-                setnavigateUp()
+                setNavigateUp()
             }
         }
     }
 
-    private fun setnavigateUp() {
+    private fun setNavigateUp() {
         Handler(Looper.getMainLooper()).postDelayed({
            findNavController().navigateUp()}
             , 1500)
@@ -109,6 +104,19 @@ class AddNurseFragment : BaseFragment<FragmentAddNurseBinding, DoctorContract.Vi
     private fun setupUsersAdapter(data: List<UsersData>?) {
         adapterNursesList.submitList(data)
         binding.rvNurses.adapter = adapterNursesList
+    }
+
+    private fun invokeAddNurse(nurseId : Int?) {
+        if (nurseId == null) {
+            showMessage(getString(R.string.select_nurse))
+        } else {
+            doctorViewModel.doIntent(
+                DoctorContract.Intent.SetNurse(
+                    callId = args.caseId,
+                    userId = nurseId
+                )
+            )
+        }
     }
 
     private fun onAddNurseClickActions() {

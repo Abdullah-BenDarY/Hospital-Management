@@ -49,8 +49,8 @@ interface DoctorCalls {
     @FormUrlEncoded
     @POST("add-nurse")
     suspend fun addNurse(
-        @Field("call_id") callId: Int,
-        @Field("user_id") userId: Int
+        @Field("call_id") callId: Int ?= null,
+        @Field("user_id") userId: Int ?= null
     ):ModelCallsResponseDTO
 
 }
