@@ -199,7 +199,7 @@ class DoctorViewModel @Inject constructor(
         }
     }
 
-    private fun setNurse(callId: Int, userId: Int) {
+    private fun setNurse(callId: Int?, userId: Int?) {
         viewModelScope.launch(Dispatchers.IO) {
             doctorUseCases.setNurse(callId, userId)
                 .collect { result ->

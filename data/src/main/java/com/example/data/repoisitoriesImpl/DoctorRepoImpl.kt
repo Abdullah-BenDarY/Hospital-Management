@@ -28,6 +28,6 @@ class DoctorRepoImpl @Inject constructor(
 
     override fun getNurseList(): Flow<ApiResult<ModelAllUsers>?> =doctorDataSource.getNurseList()
 
-    override fun setNurse(callId: Int, userId: Int): Flow<ApiResult<ModelCallsResponse>?> =
+    override fun setNurse(callId: Int?, userId: Int?): Flow<ApiResult<ModelCallsResponse>?> =
         doctorDataSource.setNurse(callId = callId, userId = userId)
 }
