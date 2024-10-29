@@ -28,7 +28,7 @@
         android:src="@drawable/ic_arrow_back"
         app:layout_constraintBottom_toBottomOf="@id/tvSelectNurse"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="@id/tvSelectNurse"/>
 
     <EditText
         android:id="@+id/edtSearch"
