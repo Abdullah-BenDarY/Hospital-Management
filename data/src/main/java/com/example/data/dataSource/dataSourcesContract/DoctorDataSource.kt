@@ -16,4 +16,13 @@ interface DoctorDataSource {
     fun invokeEndCase(id: Int): Flow<ApiResult<ModelCallsResponse>?>
     fun getNurseList(): Flow<ApiResult<ModelAllUsers>?>
     fun setNurse(callId: Int?, userId: Int?): Flow<ApiResult<ModelCallsResponse>?>
+    fun makeRequest(
+        callId: Int,
+        userId: Int,
+        note: String?,
+        type0: String,
+        type1: String?,
+        type2: String?
+    ): Flow<ApiResult<ModelCallsResponse>?>
+
 }

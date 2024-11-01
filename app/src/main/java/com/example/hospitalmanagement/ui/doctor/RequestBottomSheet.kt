@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.hospitalmanagement.base.BaseBottomSheet
 import com.example.hospitalmanagement.databinding.BottomSheetRequestBinding
@@ -38,7 +39,16 @@ class RequestBottomSheet : BaseBottomSheet<BottomSheetRequestBinding, DoctorCont
             btnRequest.setOnClickListener {
                 when {
                     btnMedicalRecord.isSelected -> showMessage("Medical Record ${args.caseId}")
-                    btnMedicalMeasurement.isSelected -> showMessage("Medical Measurement ${args.caseId}")
+                    btnMedicalMeasurement.isSelected ->
+                        if (args.nurseId <= 0) {
+                            showMessage("Please select nurse first")
+                        } else
+                            findNavController().navigate(
+                                RequestBottomSheetDirections.actionCaseDetailsFragmentToRequestMedicalFragment(
+                                    args.caseId,
+                                    args.nurseId
+                                )
+                            )
                     else -> showMessage("Null")
                 }
             }

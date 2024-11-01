@@ -24,6 +24,14 @@ interface DoctorContract{
         data class EndCase(val id:Int): Intent()
         data object GetNurseList: Intent()
         data class SetNurse(val callId:Int?, val userId:Int?): Intent()
+        data class HitRequest(
+            val callId: Int,
+            val userId: Int,
+            val note: String?,
+            val type0: String,
+            val type1: String?,
+            val type2: String?
+        ) : Intent()
     }
 
     // viewModel -> view
@@ -42,6 +50,6 @@ interface DoctorContract{
         data object CaseEnded: Event
         data class ShowNurseList(val modelAllUsers: ModelAllUsers) : Event
         data object AddNurse : Event
-
+        data object ShowRequest : Event
     }
 }

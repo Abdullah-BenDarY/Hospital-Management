@@ -53,4 +53,15 @@ interface DoctorCalls {
         @Field("user_id") userId: Int ?= null
     ):ModelCallsResponseDTO
 
+    @FormUrlEncoded
+    @POST("make-request")
+    suspend fun makeRequest(
+        @Field("call_id") callId: Int,
+        @Field("user_id") userId: Int,
+        @Field("note") note: String?,
+        @Field("types[0]") type0: String,
+        @Field("types[1]") type1: String?,
+        @Field("types[2]") type2: String?,
+    ): ModelCallsResponseDTO
+
 }

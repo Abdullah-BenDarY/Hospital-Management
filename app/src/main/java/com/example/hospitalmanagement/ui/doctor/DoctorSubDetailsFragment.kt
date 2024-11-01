@@ -15,6 +15,7 @@ import com.example.hospitalmanagement.base.BaseFragment
 import com.example.hospitalmanagement.databinding.FragmentDoctorSubDetailsBinding
 import com.example.hospitalmanagement.ui.doctor.viewModel.DoctorContract
 import com.example.hospitalmanagement.ui.doctor.viewModel.DoctorViewModel
+import com.example.hospitalmanagement.utils.SharedPrefs
 import com.example.hospitalmanagement.utils.showMessage
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -24,6 +25,7 @@ class DoctorSubDetailsFragment : BaseFragment<FragmentDoctorSubDetailsBinding, D
 
     private val doctorViewModel: DoctorContract.ViewModel by viewModels<DoctorViewModel>()
     private var caseId: Int? = null
+    private var nurseId: Int? = SharedPrefs.getNurseId()
 
     override fun inflateBinding(
         inflater: LayoutInflater,
@@ -55,7 +57,10 @@ class DoctorSubDetailsFragment : BaseFragment<FragmentDoctorSubDetailsBinding, D
     private fun handleEvents(event: DoctorContract.Event) {
         when (event) {
             DoctorContract.Event.InitialEvent -> {}
-            is DoctorContract.Event.ShowCaseData-> setUpViewUi(event.modelCaseDetails.data!!)
+            is DoctorContract.Event.ShowCaseData -> {
+                setUpViewUi(event.modelCaseDetails.data!!)
+            }
+
         }
     }
 
@@ -69,14 +74,17 @@ class DoctorSubDetailsFragment : BaseFragment<FragmentDoctorSubDetailsBinding, D
 
     private fun initClicks() {
         binding.apply {
-            btnRequest.setOnClickListener {
-                showMessage("Request Sent")
-            }
+
             btnAddNurce.setOnClickListener {
                 findNavController().navigate(CaseDetailsFragmentDirections.globalActionToAddNurseFragment(caseId!!))
             }
             btnRequest.setOnClickListener {
-                findNavController().navigate(CaseDetailsFragmentDirections.actionToDoctorRequestDialog(caseId!!))
+                findNavController().navigate(
+                    CaseDetailsFragmentDirections.actionToDoctorRequestDialog(
+                        caseId!!,
+                        nurseId!!
+                    )
+                )
             }
         }
     }

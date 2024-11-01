@@ -39,6 +39,18 @@ class DoctorDataSourceImpl @Inject constructor
             apiService.addNurse(callId = callId, userId = userId).toModelCallsResponse()
         }
 
+    override fun makeRequest(
+        callId: Int,
+        userId: Int,
+        note: String?,
+        type0: String,
+        type1: String?,
+        type2: String?
+    ): Flow<ApiResult<ModelCallsResponse>?> =
+        executeApi {
+            apiService.makeRequest(callId, userId, note, type0, type1 , type2).toModelCallsResponse()
+        }
+
     override fun getAllCases(): Flow<ApiResult<ModelDoctorCases>?> =
         executeApi {
             apiService.getAllCases().toDoctorCases()

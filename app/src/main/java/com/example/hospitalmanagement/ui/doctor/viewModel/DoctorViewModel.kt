@@ -1,6 +1,7 @@
 package com.example.hospitalmanagement.ui.doctor.viewModel
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.domain.ApiResult
 import com.example.domain.useCases.DoctorUseCases
@@ -16,7 +17,7 @@ import javax.inject.Inject
 class DoctorViewModel @Inject constructor(
     private val doctorUseCases: DoctorUseCases
 ) : DoctorContract.ViewModel() {
-
+    val sharedData = MutableLiveData<Int>()
     private val _state = SingleLiveData<DoctorContract.State>()
     private val _event = MutableStateFlow<DoctorContract.Event>(DoctorContract.Event.InitialEvent)
 
@@ -32,6 +33,60 @@ class DoctorViewModel @Inject constructor(
             is DoctorContract.Intent.EndCase -> endCase(intent.id)
             is DoctorContract.Intent.GetNurseList -> getNursesList()
             is DoctorContract.Intent.SetNurse -> setNurse(intent.callId, intent.userId)
+            is DoctorContract.Intent.HitRequest -> hitRequest(
+                callId = intent.callId,
+                userId = intent.userId,
+                note = intent.note,
+                type0 = intent.type0,
+                type1 = intent.type1,
+                type2 = intent.type2
+            )
+        }
+    }
+
+    private fun hitRequest(
+        callId: Int,
+        userId: Int,
+        note: String?,
+        type0: String,
+        type1: String?,
+        type2: String?
+    ) {
+        viewModelScope.launch(Dispatchers.IO) {
+            doctorUseCases.makeRequest(
+                callId = callId,
+                userId = userId,
+                note = note,
+                type0 = type0,
+                type1 = type1,
+                type2 = type2
+            )
+                .collect { result ->
+                    when (result) {
+                        is ApiResult.Success ->
+                            if (result.data.status == 1) {
+                                _event.emit(
+                                    DoctorContract.Event.ShowRequest
+                                )
+                            } else _state.postValue(
+                                DoctorContract.State.ShowErrorMessage(
+                                    result.data.message ?: "Unkonwn Error"
+                                )
+                            )
+
+                        is ApiResult.Failure -> _state.postValue(
+                            DoctorContract.State.ShowThrowableMessage(
+                                result.throwable
+                            )
+                        )
+
+                        null -> DoctorContract.State.ShowErrorMessage(
+                            "Unkonwn Error"
+                        )
+                    }
+
+                }
+
         }
     }
 
@@ -207,7 +262,7 @@ class DoctorViewModel @Inject constructor(
                         is ApiResult.Success ->
                             if (result.data.status == 1) {
                                 _event.emit(
-                                    DoctorContract.Event.AddNurse
+                                    DoctorContract.Event.AddNurse,
                                 )
                             } else _state.postValue(
                                 DoctorContract.State.ShowErrorMessage(
