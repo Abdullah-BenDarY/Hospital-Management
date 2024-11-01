@@ -21,6 +21,7 @@ import com.example.hospitalmanagement.base.BaseFragment
 import com.example.hospitalmanagement.databinding.FragmentAddNurseBinding
 import com.example.hospitalmanagement.ui.doctor.viewModel.DoctorContract
 import com.example.hospitalmanagement.ui.doctor.viewModel.DoctorViewModel
+import com.example.hospitalmanagement.utils.SharedPrefs
 import com.example.hospitalmanagement.utils.showMessage
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -60,6 +61,7 @@ class AddNurseFragment : BaseFragment<FragmentAddNurseBinding, DoctorContract.Vi
         }
         adapterNursesList.setOnClick {
             nurseId = it
+            SharedPrefs.setNurseId(it)
         }
     }
 

@@ -11,7 +11,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
-private val Context.userPreferences: DataStore<Preferences> by preferencesDataStore(name = "User-Preferences")
+    private val Context.userPreferences: DataStore<Preferences> by preferencesDataStore(name = "User-Preferences")
 
 @Module
 @InstallIn(SingletonComponent::class)

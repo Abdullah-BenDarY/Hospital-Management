@@ -149,6 +149,7 @@
         <argument
             android:name="caseId"
             app:argType="integer" />
+
     </fragment>
 
     <dialog
@@ -156,9 +157,22 @@
         android:name="com.example.hospitalmanagement.ui.doctor.RequestBottomSheet"
         android:label="RequestBottomSheet"
         tools:layout="@layout/bottom_sheet_request">
+        <action
+            android:id="@+id/action_caseDetailsFragment_to_requestMedicalFragment"
+            app:destination="@id/requestMedicalFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
         <argument
             android:name="caseId"
-            app:argType="integer" />
+            app:argType="integer"
+            />
+        <argument
+            android:name="nurseId"
+            app:argType="integer"
+            />
     </dialog>
 
     <fragment
@@ -168,6 +182,18 @@
         tools:layout="@layout/fragment_add_nurse">
         <argument
             android:name="caseId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/requestMedicalFragment"
+        android:name="com.example.hospitalmanagement.ui.doctor.RequestMedicalFragment"
+        android:label="fragment_request_medical"
+        tools:layout="@layout/fragment_request_medical" >
+        <argument
+            android:name="caseId"
+            app:argType="integer" />
+        <argument
+            android:name="userId"
             app:argType="integer" />
     </fragment>
 
