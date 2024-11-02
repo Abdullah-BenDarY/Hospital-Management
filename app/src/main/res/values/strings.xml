@@ -136,4 +136,7 @@
     <string name="select_nurse">Select Nurse</string>
     <string name="nurse_aded">Nurse aded</string>
     <string name="search_for_nurse">Search for nurse</string>
+    <string name="sgot_sgpt">SGOT,SGPT</string>
+    <string name="esr">ESR</string>
+    <string name="lipid_profile">Lipid profile</string>
 </resources>
